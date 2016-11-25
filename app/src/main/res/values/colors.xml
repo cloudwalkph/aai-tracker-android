@@ -3,4 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="medix_blue">#3fa9f5</color>
+    <color name="medix_darker_blue">#2197EB</color>
+    <color name="medix_white">#ffffff</color>
+    <color name="medix_green">#1DB364</color>
+    <color name="medix_red">#DD3939</color>
+    <color name="medix_yellow">#FBDE22</color>
+    <color name="medix_dark_gray">#565A5C</color>
+    <color name="medix_gray">#ECEFF2</color>
 </resources>
