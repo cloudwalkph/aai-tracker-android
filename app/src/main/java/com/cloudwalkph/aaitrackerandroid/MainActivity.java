@@ -1,6 +1,7 @@
 package com.cloudwalkph.aaitrackerandroid;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
+import com.cloudwalkph.aaitrackerandroid.lib.service.UploadService;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.OnBackPressedListener;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenController;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenControllerImpl;
@@ -61,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
                 .setImagesFolderName("AAITracker") //images folder name, default is "EasyImage"
                 //.saveInAppExternalFilesDir() //if you want to use root internal memory for storying images
                 .saveInRootPicturesDirectory(); //if you want to use internal memory for storying images - default
+
+        Intent intent = new Intent(this, UploadService.class);
+        startService(intent);
 
         initializeScreenController();
         navigateToLoginScreen();

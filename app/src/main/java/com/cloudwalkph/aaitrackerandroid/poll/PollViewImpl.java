@@ -27,9 +27,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -148,14 +145,7 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
 
     @OnClick(R.id.saveAnswer)
     public void saveAnswer(View view) {
-        // create RequestBody instance from file
-        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile);
-
-        // MultipartBody.Part is used to send also the actual file name
-        MultipartBody.Part body =
-                MultipartBody.Part.createFormData("image", imageFile.getName(), requestFile);
-
-        presenter.postAnswer(body);
+        presenter.saveAnswer(selectedAge, selectedGender, imageFile.getAbsolutePath());
     }
 
     @Override
@@ -173,21 +163,6 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     @Override
     public void setContainerVisible(boolean visible) {
         Log.d(TAG, "setContainerVisible " + visible);
-    }
-
-    @Override
-    public void getPollAnswers() {
-
-    }
-
-    @Override
-    public String getGender() {
-        return selectedGender;
-    }
-
-    @Override
-    public String getAge() {
-        return selectedAge;
     }
 
     @Override

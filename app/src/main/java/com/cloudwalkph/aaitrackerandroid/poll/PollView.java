@@ -12,10 +12,4 @@ public interface PollView {
 
     void setContainerVisible(boolean visible);
 
-    void getPollAnswers();
-
-    String getGender();
-
-    String getAge();
-
 }
