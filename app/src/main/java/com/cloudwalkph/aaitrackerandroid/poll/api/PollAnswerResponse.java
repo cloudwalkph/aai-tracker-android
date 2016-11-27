@@ -7,6 +7,7 @@ import com.cloudwalkph.aaitrackerandroid.lib.model.EventAnswer;
  */
 
 public class PollAnswerResponse {
+
     private EventAnswer data;
     private int status;
 

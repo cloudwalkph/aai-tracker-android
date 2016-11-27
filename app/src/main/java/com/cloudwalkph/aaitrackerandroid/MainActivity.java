@@ -14,8 +14,8 @@ import com.cloudwalkph.aaitrackerandroid.lib.ui.OnBackPressedListener;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenController;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenControllerImpl;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenControllerProvider;
-import com.cloudwalkph.aaitrackerandroid.poll.PollView;
-import com.cloudwalkph.aaitrackerandroid.poll.PollViewImpl;
+import com.cloudwalkph.aaitrackerandroid.login.LoginView;
+import com.cloudwalkph.aaitrackerandroid.login.LoginViewImpl;
 import com.facebook.stetho.Stetho;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
     }
 
     private void navigateToLoginScreen() {
-        screenController.navigateToScreen(new PollViewImpl(), PollView.TAG);
+        screenController.navigateToScreen(new LoginViewImpl(), LoginView.TAG);
     }
 
     @Override
