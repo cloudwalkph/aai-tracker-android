@@ -2,6 +2,7 @@ package com.cloudwalkph.aaitrackerandroid.poll;
 
 import com.cloudwalkph.aaitrackerandroid.lib.model.LocalAnswer;
 import com.cloudwalkph.aaitrackerandroid.lib.model.LocalPollAnswer;
+import com.cloudwalkph.aaitrackerandroid.lib.model.TokenOwner;
 
 import java.util.UUID;
 
@@ -27,7 +28,7 @@ public class PollPresenterImpl implements PollPresenter {
         String eventId = "1";
         String eventLocationId = "3";
         String uuid = UUID.randomUUID().toString();
-        String userId = "1";
+        String userId = String.valueOf(TokenOwner.getInstance().getId());
 
         LocalPollAnswer answer1 = new LocalPollAnswer();
         answer1.pollId = "1";
