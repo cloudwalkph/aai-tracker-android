@@ -4,7 +4,11 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
+import android.view.Gravity;
+import android.view.View;
 
 import com.cloudwalkph.aaitrackerandroid.R;
 
@@ -19,6 +23,14 @@ public class UploadServiceReceiver extends BroadcastReceiver {
 
     public UploadServiceReceiver(Activity activity) {
         snackbar = Snackbar.make(activity.findViewById(R.id.coordinator_layout), "", Snackbar.LENGTH_INDEFINITE);
+        View snackBarView = snackbar.getView();
+        // bgcolor
+        snackBarView.setBackgroundColor(ContextCompat.getColor(activity, R.color.medix_gray));
+        // move to top
+        CoordinatorLayout.LayoutParams params =(CoordinatorLayout.LayoutParams)snackBarView.getLayoutParams();
+        params.gravity = Gravity.TOP;
+        snackBarView.setLayoutParams(params);
+
         snackbar.show();
     }
 

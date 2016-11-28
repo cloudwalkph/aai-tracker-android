@@ -30,7 +30,6 @@ public class UploadService extends IntentService {
         final UploadWorker uploadWorker = new UploadWorkerImpl();
 
         while(true) {
-            SystemClock.sleep(10000);
             Realm realm = null;
             try {
                 realm = Realm.getDefaultInstance();
@@ -40,38 +39,41 @@ public class UploadService extends IntentService {
                         .findAll();
 
                 String message = "No connection.";
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(UploadServiceReceiver.ACTION_RESP);
+                broadcastIntent.addCategory(Intent.CATEGORY_DEFAULT);
+
                 if(isInternetAvailable()) {
                     if(pollAnswerBodyRealmResults.size() == 0) {
                         message = "All answers has been uploaded.";
                     } else {
-                        message = "Uploading: "+pollAnswerBodyRealmResults.size()+" answers.";
+                        int unPosted = pollAnswerBodyRealmResults.size();
+                        for (LocalAnswer localAnswer : pollAnswerBodyRealmResults) {
+                            message = "Uploading: "+unPosted+" answers.";
+                            broadcastIntent.putExtra(PARAM_OUT_MSG, message);
+                            sendBroadcast(broadcastIntent);
+                            SystemClock.sleep(3000);
+
+                            String uploadedFilename = uploadWorker.postImage(localAnswer.origImage);
+
+                            realm.beginTransaction();
+                            localAnswer.image = uploadedFilename;
+                            PollAnswerResponse pollAnswerResponse = uploadWorker.postAnswer(localAnswer);
+                            localAnswer.isPosted = true;
+
+                            realm.copyToRealmOrUpdate(localAnswer);
+                            realm.copyToRealmOrUpdate(pollAnswerResponse.getData());
+                            realm.commitTransaction();
+                            unPosted--;
+                        }
                     }
                 } else {
                     if(pollAnswerBodyRealmResults.size() > 0) {
                         message = "No connection. Pending: "+pollAnswerBodyRealmResults.size()+" answers.";
                     }
                 }
-
-                Intent broadcastIntent = new Intent();
-                broadcastIntent.setAction(UploadServiceReceiver.ACTION_RESP);
-                broadcastIntent.addCategory(Intent.CATEGORY_DEFAULT);
                 broadcastIntent.putExtra(PARAM_OUT_MSG, message);
                 sendBroadcast(broadcastIntent);
-
-                for (LocalAnswer localAnswer : pollAnswerBodyRealmResults) {
-                    SystemClock.sleep(3000);
-
-                    String uploadedFilename = uploadWorker.postImage(localAnswer.origImage);
-
-                    realm.beginTransaction();
-                    localAnswer.image = uploadedFilename;
-                    PollAnswerResponse pollAnswerResponse = uploadWorker.postAnswer(localAnswer);
-                    localAnswer.isPosted = true;
-
-                    realm.copyToRealmOrUpdate(localAnswer);
-                    realm.copyToRealmOrUpdate(pollAnswerResponse.getData());
-                    realm.commitTransaction();
-                }
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -79,12 +81,13 @@ public class UploadService extends IntentService {
                     realm.close();
                 }
             }
+            SystemClock.sleep(5000);
         }
     }
 
     public boolean isInternetAvailable() {
         try {
-            InetAddress ipAddr = InetAddress.getByName("google.com"); //You can replace it with your name
+            InetAddress ipAddr = InetAddress.getByName("aai-tracker.medix.ph"); //You can replace it with your name
             return !ipAddr.equals("");
 
         } catch (Exception e) {
