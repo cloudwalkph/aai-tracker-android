@@ -1,13 +1,13 @@
-package com.cloudwalkph.aaitrackerandroid.lib.service;
+package com.cloudwalkph.aaitrackerandroid.service;
 
 import com.cloudwalkph.aaitrackerandroid.lib.api.ServiceGenerator;
 import com.cloudwalkph.aaitrackerandroid.lib.model.LocalAnswer;
 import com.cloudwalkph.aaitrackerandroid.lib.model.LocalPollAnswer;
-import com.cloudwalkph.aaitrackerandroid.lib.service.api.UploadClient;
-import com.cloudwalkph.aaitrackerandroid.lib.service.api.AnswerBody;
-import com.cloudwalkph.aaitrackerandroid.lib.service.api.PollAnswerBody;
-import com.cloudwalkph.aaitrackerandroid.lib.service.api.PollAnswerResponse;
-import com.cloudwalkph.aaitrackerandroid.lib.service.api.PollImageResponse;
+import com.cloudwalkph.aaitrackerandroid.service.api.UploadClient;
+import com.cloudwalkph.aaitrackerandroid.service.api.AnswerBody;
+import com.cloudwalkph.aaitrackerandroid.service.api.PollAnswerBody;
+import com.cloudwalkph.aaitrackerandroid.service.api.PollAnswerResponse;
+import com.cloudwalkph.aaitrackerandroid.service.api.PollImageResponse;
 
 import java.io.File;
 import java.io.IOException;

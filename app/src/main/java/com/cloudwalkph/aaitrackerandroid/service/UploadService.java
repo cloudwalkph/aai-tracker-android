@@ -1,13 +1,14 @@
-package com.cloudwalkph.aaitrackerandroid.lib.service;
+package com.cloudwalkph.aaitrackerandroid.service;
 
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.SystemClock;
 
 import com.cloudwalkph.aaitrackerandroid.lib.model.LocalAnswer;
-import com.cloudwalkph.aaitrackerandroid.lib.service.api.PollAnswerResponse;
+import com.cloudwalkph.aaitrackerandroid.service.api.PollAnswerResponse;
 
 import java.io.IOException;
+import java.net.InetAddress;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -17,6 +18,8 @@ import io.realm.RealmResults;
  */
 
 public class UploadService extends IntentService {
+    public static final String PARAM_IN_MSG = "imsg";
+    public static final String PARAM_OUT_MSG = "omsg";
 
     public UploadService() {
         super("UploadService");
@@ -35,6 +38,26 @@ public class UploadService extends IntentService {
                         .where(LocalAnswer.class)
                         .equalTo("isPosted", false)
                         .findAll();
+
+                String message = "No connection.";
+                if(isInternetAvailable()) {
+                    if(pollAnswerBodyRealmResults.size() == 0) {
+                        message = "All answers has been uploaded.";
+                    } else {
+                        message = "Uploading: "+pollAnswerBodyRealmResults.size()+" answers.";
+                    }
+                } else {
+                    if(pollAnswerBodyRealmResults.size() > 0) {
+                        message = "No connection. Pending: "+pollAnswerBodyRealmResults.size()+" answers.";
+                    }
+                }
+
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(UploadServiceReceiver.ACTION_RESP);
+                broadcastIntent.addCategory(Intent.CATEGORY_DEFAULT);
+                broadcastIntent.putExtra(PARAM_OUT_MSG, message);
+                sendBroadcast(broadcastIntent);
+
                 for (LocalAnswer localAnswer : pollAnswerBodyRealmResults) {
                     SystemClock.sleep(3000);
 
@@ -57,5 +80,16 @@ public class UploadService extends IntentService {
                 }
             }
         }
+    }
+
+    public boolean isInternetAvailable() {
+        try {
+            InetAddress ipAddr = InetAddress.getByName("google.com"); //You can replace it with your name
+            return !ipAddr.equals("");
+
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 }

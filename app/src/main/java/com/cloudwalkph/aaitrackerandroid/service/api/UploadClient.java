@@ -1,4 +1,4 @@
-package com.cloudwalkph.aaitrackerandroid.lib.service.api;
+package com.cloudwalkph.aaitrackerandroid.service.api;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;

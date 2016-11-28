@@ -5,8 +5,8 @@ package com.cloudwalkph.aaitrackerandroid.lib.api;
  */
 public class Conf {
 
-    public static final String API_HOST = "http://192.168.1.105:8000";
-    public static final String API_CLIENT_ID = "1";
-    public static final String API_CLIENT_SECRET = "Ab6JUmAZKbU9QaZJaV9P4JYoUL8cEEf4mo9Nla0d";
+    public static final String API_HOST = "http://aai-tracker.medix.ph";
+    public static final String API_CLIENT_ID = "2";
+    public static final String API_CLIENT_SECRET = "qQEALDSEFOofghMy7kAuRDGlSH41FeE9DKc2f24i";
     public static final String API_GRANT_TYPE = "password";
 }
