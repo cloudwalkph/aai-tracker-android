@@ -1,19 +1,19 @@
 package com.cloudwalkph.aaitrackerandroid.poll;
 
-import com.cloudwalkph.aaitrackerandroid.lib.model.EventAnswer;
-import com.cloudwalkph.aaitrackerandroid.poll.api.AnswerBody;
+import com.cloudwalkph.aaitrackerandroid.lib.model.LocalAnswer;
+import com.cloudwalkph.aaitrackerandroid.lib.model.LocalPollAnswer;
+import com.cloudwalkph.aaitrackerandroid.lib.model.TokenOwner;
 
 import java.util.UUID;
 
 import io.realm.Realm;
 import io.realm.RealmList;
-import okhttp3.MultipartBody;
 
 /**
  * Created by trick.sunga on 22/11/2016.
  */
 
-public class PollPresenterImpl implements PollPresenter, OnPollAnswerWorkerListener {
+public class PollPresenterImpl implements PollPresenter {
     private PollView view;
 
     public PollPresenterImpl(PollView view) {
@@ -21,56 +21,43 @@ public class PollPresenterImpl implements PollPresenter, OnPollAnswerWorkerListe
     }
 
     @Override
-    public void postAnswer(MultipartBody.Part image) {
+    public void saveAnswer(String age, String gender, String image) {
         view.setContainerVisible(false);
         view.setProgressDialogVisible(true);
 
-        PollWorker pollWorker = new PollWorkerImpl(this);
-        pollWorker.postImage(image);
-    }
-
-    @Override
-    public void onPollImageUploadSuccess(String filename) {
-        // get inputs and image
         String eventId = "1";
         String eventLocationId = "3";
         String uuid = UUID.randomUUID().toString();
-        String userId = "1";
+        String userId = String.valueOf(TokenOwner.getInstance().getId());
 
-        AnswerBody answer1 = new AnswerBody();
+        LocalPollAnswer answer1 = new LocalPollAnswer();
         answer1.pollId = "1";
-        answer1.value = view.getAge();
+        answer1.value = age;
 
-        AnswerBody answer2 = new AnswerBody();
+        LocalPollAnswer answer2 = new LocalPollAnswer();
         answer2.pollId = "2";
-        answer2.value = view.getGender();
+        answer2.value = gender;
 
-        RealmList<AnswerBody> answers = new RealmList<>();
-        answers.add(answer1);
-        answers.add(answer2);
+        RealmList<LocalPollAnswer> localPollAnswers = new RealmList<>();
+        localPollAnswers.add(answer1);
+        localPollAnswers.add(answer2);
 
-        PollWorker pollWorker = new PollWorkerImpl(this);
-        pollWorker.postAnswer(eventId, eventLocationId, uuid, userId, filename, answers);
-    }
-
-    @Override
-    public void onPollImageUploadFail(String message) {
-
-    }
-
-    @Override
-    public void onPollAnswerSuccess(EventAnswer eventAnswer) {
-        view.setContainerVisible(true);
-        view.setProgressDialogVisible(false);
+        LocalAnswer localAnswer = new LocalAnswer();
+        localAnswer.eventId = eventId;
+        localAnswer.eventLocationId = eventLocationId;
+        localAnswer.uuid = uuid;
+        localAnswer.userId = userId;
+        localAnswer.origImage = image;
+        localAnswer.localPollAnswers = localPollAnswers;
+        localAnswer.isPosted = false;
 
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-        realm.copyToRealmOrUpdate(eventAnswer);
+        realm.copyToRealmOrUpdate(localAnswer);
         realm.commitTransaction();
-    }
+        realm.close();
 
-    @Override
-    public void onPollAnswerFail(String message) {
-
+        view.setContainerVisible(true);
+        view.setProgressDialogVisible(false);
     }
 }

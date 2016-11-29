@@ -1,4 +1,4 @@
-package com.cloudwalkph.aaitrackerandroid.poll.api;
+package com.cloudwalkph.aaitrackerandroid.service.api;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
  * Created by trick.sunga on 23/11/2016.
  */
 public class PollImageResponse {
-
     private int status;
     private Data data;
 
@@ -70,5 +69,4 @@ public class PollImageResponse {
     public void setData(Data data) {
         this.data = data;
     }
-
 }

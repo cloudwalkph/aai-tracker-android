@@ -1,4 +1,4 @@
-package com.cloudwalkph.aaitrackerandroid.poll.api;
+package com.cloudwalkph.aaitrackerandroid.service.api;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -9,10 +9,10 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 /**
- * Created by trick.sunga on 23/11/2016.
+ * Created by trick.sunga on 25/11/2016.
  */
 
-public interface PollClient {
+public interface UploadClient {
 
     @POST("/api/v1/upload")
     @Multipart
@@ -21,5 +21,5 @@ public interface PollClient {
     @POST("/api/v1/events/{eventId}/event-locations/{eventLocationId}/answer")
     Call<PollAnswerResponse> postAnswer(@Path("eventId") String eventId,
                                         @Path("eventLocationId") String eventLocationId,
-                                        @Body PollAnswerBody pollAnswerBody);
+                                        @Body AnswerBody answerBody);
 }

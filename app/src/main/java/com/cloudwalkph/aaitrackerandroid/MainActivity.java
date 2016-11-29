@@ -1,6 +1,8 @@
 package com.cloudwalkph.aaitrackerandroid;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Rect;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +12,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
+import com.cloudwalkph.aaitrackerandroid.service.UploadService;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.OnBackPressedListener;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenController;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenControllerImpl;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenControllerProvider;
 import com.cloudwalkph.aaitrackerandroid.login.LoginView;
 import com.cloudwalkph.aaitrackerandroid.login.LoginViewImpl;
+import com.cloudwalkph.aaitrackerandroid.service.UploadServiceReceiver;
 import com.facebook.stetho.Stetho;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
 
     ScreenControllerImpl screenController;
     OnBackPressedListener onBackPressedListener;
+    UploadServiceReceiver uploadServiceReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
                 //.saveInAppExternalFilesDir() //if you want to use root internal memory for storying images
                 .saveInRootPicturesDirectory(); //if you want to use internal memory for storying images - default
 
+        initializeServices();
         initializeScreenController();
         navigateToLoginScreen();
     }
@@ -73,6 +79,18 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
     @Override
     public ScreenController getScreenController() {
         return screenController;
+    }
+
+    private void initializeServices() {
+        // Receiver
+        IntentFilter filter = new IntentFilter(UploadServiceReceiver.ACTION_RESP);
+        filter.addCategory(Intent.CATEGORY_DEFAULT);
+        uploadServiceReceiver = new UploadServiceReceiver(this);
+        registerReceiver(uploadServiceReceiver, filter);
+
+        // Service
+        Intent intent = new Intent(this, UploadService.class);
+        startService(intent);
     }
 
     private void initializeScreenController() {
