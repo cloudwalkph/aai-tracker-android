@@ -174,6 +174,18 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     }
 
     @Override
+    public void resetForm() {
+        imageFile = null;
+        selectedAge = "15-20";
+        selectedGender = "male";
+        age1520.setChecked(true);
+        genderMale.setChecked(true);
+        Picasso.with(getContext())
+                .load(R.drawable.ic_insert_photo_white_48dp)
+                .into(profilePic);
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 

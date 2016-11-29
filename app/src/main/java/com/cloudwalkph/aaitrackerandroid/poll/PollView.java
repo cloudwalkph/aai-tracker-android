@@ -12,4 +12,6 @@ public interface PollView {
 
     void setContainerVisible(boolean visible);
 
+    void resetForm();
+
 }
