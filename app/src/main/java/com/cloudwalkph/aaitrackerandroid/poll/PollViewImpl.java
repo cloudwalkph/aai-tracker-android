@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.cloudwalkph.aaitrackerandroid.R;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.BaseFragment;
@@ -102,6 +103,8 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     private void initializeView(View rootView){
         ButterKnife.bind(this, rootView);
 
+        selectedAge = "15-20";
+        selectedGender = "male";
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setCancelable(false);
     }
@@ -145,7 +148,12 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
 
     @OnClick(R.id.saveAnswer)
     public void saveAnswer(View view) {
-        presenter.saveAnswer(selectedAge, selectedGender, imageFile.getAbsolutePath());
+        // validate
+        if(imageFile == null) {
+            Toast.makeText(getActivity(), "Please capture an image", Toast.LENGTH_LONG).show();
+        } else {
+            presenter.saveAnswer(selectedAge, selectedGender, imageFile.getAbsolutePath());
+        }
     }
 
     @Override
