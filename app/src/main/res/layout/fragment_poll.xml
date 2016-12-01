@@ -22,10 +22,10 @@
             android:layout_margin="50dp">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_insert_photo_white_48dp"
-                android:id="@+id/picture" />
+                android:layout_width="250px"
+                app:srcCompat="@drawable/camera"
+                android:id="@+id/picture"
+                android:layout_height="250px" />
 
 
 

@@ -181,7 +181,7 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
         age1520.setChecked(true);
         genderMale.setChecked(true);
         Picasso.with(getContext())
-                .load(R.drawable.ic_insert_photo_white_48dp)
+                .load(R.drawable.camera)
                 .into(profilePic);
     }
 
@@ -201,8 +201,8 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
                 imageFile = imageFiles.get(0);
                 Picasso.with(getContext())
                         .load(imageFiles.get(0))
-//                        .placeholder(R.drawable.generic_profile_pic)
-//                        .error(R.drawable.generic_profile_pic)
+                        .placeholder(R.drawable.camera)
+                        .error(R.drawable.camera)
                         .resize(320, 480)
                         .centerInside()
                         .into(profilePic);
