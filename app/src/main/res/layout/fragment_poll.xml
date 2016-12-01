@@ -23,9 +23,9 @@
 
             <ImageView
                 android:layout_width="250px"
+                android:layout_height="250px"
                 app:srcCompat="@drawable/camera"
-                android:id="@+id/picture"
-                android:layout_height="250px" />
+                android:id="@+id/picture" />
 
 
 

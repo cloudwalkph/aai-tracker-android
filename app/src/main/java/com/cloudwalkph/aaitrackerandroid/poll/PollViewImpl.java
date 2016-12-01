@@ -1,9 +1,11 @@
 package com.cloudwalkph.aaitrackerandroid.poll;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -171,6 +173,20 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     @Override
     public void setContainerVisible(boolean visible) {
         Log.d(TAG, "setContainerVisible " + visible);
+    }
+
+    @Override
+    public void showSuccessDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+        alertDialog.setTitle("Success!");
+        alertDialog.setMessage("Answer has been saved. Press ok to dismiss.");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
     @Override

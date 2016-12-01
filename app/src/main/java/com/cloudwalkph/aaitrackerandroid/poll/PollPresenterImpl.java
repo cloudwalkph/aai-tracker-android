@@ -59,6 +59,7 @@ public class PollPresenterImpl implements PollPresenter {
 
         view.setContainerVisible(true);
         view.setProgressDialogVisible(false);
+        view.showSuccessDialog();
         view.resetForm();
     }
 }
