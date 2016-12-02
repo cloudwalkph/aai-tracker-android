@@ -27,7 +27,7 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -48,28 +48,28 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     String selectedGender;
     String selectedAge;
 
-    @Bind(R.id.picture)
+    @BindView(R.id.picture)
     ImageView profilePic;
-    @Bind(R.id.saveAnswer)
+    @BindView(R.id.saveAnswer)
     Button saveAnswer;
 
-    @Bind(R.id.genderMale)
+    @BindView(R.id.genderMale)
     RadioButton genderMale;
-    @Bind(R.id.genderFemale)
+    @BindView(R.id.genderFemale)
     RadioButton genderFemale;
 
-    @Bind(R.id.age1520)
+    @BindView(R.id.age1520)
     RadioButton age1520;
-    @Bind(R.id.age2125)
+    @BindView(R.id.age2125)
     RadioButton age2125;
-    @Bind(R.id.age2630)
+    @BindView(R.id.age2630)
     RadioButton age2530;
-    @Bind(R.id.age3135)
+    @BindView(R.id.age3135)
     RadioButton age3135;
 
-    @Bind(R.id.genderGroup)
+    @BindView(R.id.genderGroup)
     RadioGroup genderGroup;
-    @Bind(R.id.ageGroup)
+    @BindView(R.id.ageGroup)
     RadioGroup ageGroup;
 
     private ScreenController screenController;
