@@ -26,7 +26,7 @@ public class PollPresenterImpl implements PollPresenter {
         view.setProgressDialogVisible(true);
 
         String eventId = "1";
-        String eventLocationId = "3";
+        String eventLocationId = "1";
         String uuid = UUID.randomUUID().toString();
         String userId = String.valueOf(TokenOwner.getInstance().getId());
 
