@@ -13,8 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.cloudwalkph.aaitrackerandroid.R;
@@ -27,7 +25,9 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindColor;
+import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -48,29 +48,34 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     String selectedGender;
     String selectedAge;
 
-    @Bind(R.id.picture)
+    @BindView(R.id.picture)
     ImageView profilePic;
-    @Bind(R.id.saveAnswer)
+    @BindView(R.id.saveAnswer)
     Button saveAnswer;
 
-    @Bind(R.id.genderMale)
-    RadioButton genderMale;
-    @Bind(R.id.genderFemale)
-    RadioButton genderFemale;
+    @BindView(R.id.genderMale)
+    Button genderMale;
+    @BindView(R.id.genderFemale)
+    Button genderFemale;
+    @BindViews({R.id.genderMale, R.id.genderFemale})
+    List<Button> genderButtons;
 
-    @Bind(R.id.age1520)
-    RadioButton age1520;
-    @Bind(R.id.age2125)
-    RadioButton age2125;
-    @Bind(R.id.age2630)
-    RadioButton age2530;
-    @Bind(R.id.age3135)
-    RadioButton age3135;
+    @BindView(R.id.age1520)
+    Button age1520;
+    @BindView(R.id.age2125)
+    Button age2125;
+    @BindView(R.id.age2630)
+    Button age2530;
+    @BindView(R.id.age3135)
+    Button age3135;
+    @BindViews({R.id.age1520, R.id.age2125, R.id.age2630, R.id.age3135})
+    List<Button> ageButtons;
 
-    @Bind(R.id.genderGroup)
-    RadioGroup genderGroup;
-    @Bind(R.id.ageGroup)
-    RadioGroup ageGroup;
+    @BindColor(R.color.medix_gray)
+    int medixGray;
+    @BindColor(R.color.medix_blue)
+    int medixBlue;
+
 
     private ScreenController screenController;
 
@@ -105,8 +110,8 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     private void initializeView(View rootView){
         ButterKnife.bind(this, rootView);
 
-        selectedAge = "15-20";
-        selectedGender = "male";
+        selectedAge = "";
+        selectedGender = "";
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setCancelable(false);
     }
@@ -117,8 +122,8 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     }
 
     @OnClick({R.id.genderMale, R.id.genderFemale})
-    public void selectGender(RadioButton radioButton) {
-        switch(radioButton.getId()) {
+    public void selectGender(Button button) {
+        switch(button.getId()) {
             case R.id.genderMale:
                 selectedGender = "male";
                 break;
@@ -126,12 +131,18 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
                 selectedGender = "female";
                 break;
         }
+        button.setBackgroundColor(medixBlue);
+        for (Button genderButton : genderButtons) {
+            if (button.getId() != genderButton.getId()) {
+                genderButton.setBackgroundColor(medixGray);
+            }
+        }
         Log.d("SELECTGENDER", selectedGender);
     }
 
     @OnClick({R.id.age1520, R.id.age2125, R.id.age2630, R.id.age3135})
-    public void selectAge(RadioButton radioButton) {
-        switch(radioButton.getId()) {
+    public void selectAge(Button button) {
+        switch(button.getId()) {
             case R.id.age1520:
                 selectedAge = "15-20";
                 break;
@@ -145,6 +156,12 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
                 selectedAge = "31-35";
                 break;
         }
+        button.setBackgroundColor(medixBlue);
+        for (Button ageButton : ageButtons) {
+            if (button.getId() != ageButton.getId()) {
+                ageButton.setBackgroundColor(medixGray);
+            }
+        }
         Log.d("SELECTAGE", selectedAge);
     }
 
@@ -152,11 +169,21 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     public void saveAnswer(View view) {
         // validate
         if(imageFile == null) {
-            Toast.makeText(getActivity(), "Please capture an image", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Please capture an image.", Toast.LENGTH_LONG).show();
+        } else if(selectedGender.equals("")) {
+            Toast.makeText(getActivity(), "Please select gender.", Toast.LENGTH_LONG).show();
+        } else if(selectedAge.equals("")) {
+            Toast.makeText(getActivity(), "Please select age.", Toast.LENGTH_LONG).show();
         } else {
             presenter.saveAnswer(selectedAge, selectedGender, imageFile.getAbsolutePath());
         }
     }
+
+    ButterKnife.Action<View> RESET_BUTTONS = new ButterKnife.Action<View>() {
+        @Override public void apply(View view, int index) {
+            view.setBackgroundColor(getResources().getColor(R.color.medix_dark_gray));
+        }
+    };
 
     @Override
     public void setProgressDialogVisible(boolean visible) {
@@ -192,10 +219,10 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     @Override
     public void resetForm() {
         imageFile = null;
-        selectedAge = "15-20";
-        selectedGender = "male";
-        age1520.setChecked(true);
-        genderMale.setChecked(true);
+        selectedAge = "";
+        selectedGender = "";
+        ButterKnife.apply(genderButtons, RESET_BUTTONS);
+        ButterKnife.apply(ageButtons, RESET_BUTTONS);
         Picasso.with(getContext())
                 .load(R.drawable.camera)
                 .into(profilePic);

@@ -71,4 +71,9 @@ dependencies {
      * Stetho - Realm plugin
      */
     compile 'com.uphyca:stetho_realm:2.0.0'
+
+    /**
+     * FlowLayout
+     */
+    compile 'org.apmem.tools:layouts:1.10@aar'
 }
