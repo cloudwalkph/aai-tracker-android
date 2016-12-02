@@ -1,6 +1,6 @@
 package com.cloudwalkph.aaitrackerandroid.service;
 
-import com.cloudwalkph.aaitrackerandroid.lib.model.LocalAnswer;
+import com.cloudwalkph.aaitrackerandroid.lib.model.LocalEventAnswer;
 import com.cloudwalkph.aaitrackerandroid.service.api.PollAnswerResponse;
 
 import java.io.IOException;
@@ -12,5 +12,5 @@ import java.io.IOException;
 public interface UploadWorker {
 
     String postImage(String imageFile) throws IOException;
-    PollAnswerResponse postAnswer(LocalAnswer localAnswer) throws IOException;
+    PollAnswerResponse postAnswer(LocalEventAnswer localEventAnswer) throws IOException;
 }

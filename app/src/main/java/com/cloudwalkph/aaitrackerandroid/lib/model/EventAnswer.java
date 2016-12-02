@@ -21,11 +21,13 @@ public class EventAnswer extends RealmObject {
     @SerializedName("event_location_id")
     private String eventLocationId;
     private String image;
+    @SerializedName("hit_date")
+    private String hitDate;
     @SerializedName("updated_at")
     private String updatedAt;
     @SerializedName("created_at")
     private String createdAt;
-    private RealmList<Answer> answers = new RealmList<Answer>();
+    private RealmList<PollAnswer> pollAnswers = new RealmList<PollAnswer>();
 
 
     /**
@@ -138,6 +140,24 @@ public class EventAnswer extends RealmObject {
 
     /**
      *
+     * @param hitDate
+     * The hitDate
+     */
+    public void setHitDate(String hitDate) {
+        this.hitDate = hitDate;
+    }
+
+    /**
+     *
+     * @return
+     * The hitDate
+     */
+    public String getHitDate() {
+        return hitDate;
+    }
+
+    /**
+     *
      * @return
      * The updatedAt
      */
@@ -175,18 +195,18 @@ public class EventAnswer extends RealmObject {
     /**
      *
      * @return
-     * The answers
+     * The pollAnswers
      */
-    public RealmList<Answer> getAnswers() {
-        return answers;
+    public RealmList<PollAnswer> getPollAnswers() {
+        return pollAnswers;
     }
 
     /**
      *
-     * @param answers
-     * The answers
+     * @param pollAnswers
+     * The pollAnswers
      */
-    public void setAnswers(RealmList<Answer> answers) {
-        this.answers = answers;
+    public void setPollAnswers(RealmList<PollAnswer> pollAnswers) {
+        this.pollAnswers = pollAnswers;
     }
 }

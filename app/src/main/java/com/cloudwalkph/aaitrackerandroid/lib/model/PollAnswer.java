@@ -9,7 +9,7 @@ import io.realm.annotations.PrimaryKey;
  * Created by trick.sunga on 23/11/2016.
  */
 
-public class Answer extends RealmObject{
+public class PollAnswer extends RealmObject{
 
     @SerializedName("poll_id")
     private String pollId;

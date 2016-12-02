@@ -143,4 +143,10 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
                     }
                 }).create().show();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(uploadServiceReceiver);
+    }
 }

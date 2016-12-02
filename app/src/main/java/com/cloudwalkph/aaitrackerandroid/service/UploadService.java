@@ -4,7 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.os.SystemClock;
 
-import com.cloudwalkph.aaitrackerandroid.lib.model.LocalAnswer;
+import com.cloudwalkph.aaitrackerandroid.lib.model.LocalEventAnswer;
 import com.cloudwalkph.aaitrackerandroid.service.api.PollAnswerResponse;
 
 import java.io.IOException;
@@ -33,8 +33,8 @@ public class UploadService extends IntentService {
             Realm realm = null;
             try {
                 realm = Realm.getDefaultInstance();
-                RealmResults<LocalAnswer> pollAnswerBodyRealmResults = realm
-                        .where(LocalAnswer.class)
+                RealmResults<LocalEventAnswer> pollAnswerBodyRealmResults = realm
+                        .where(LocalEventAnswer.class)
                         .equalTo("isPosted", false)
                         .findAll();
 
@@ -48,20 +48,20 @@ public class UploadService extends IntentService {
                         message = "All answers has been uploaded.";
                     } else {
                         int unPosted = pollAnswerBodyRealmResults.size();
-                        for (LocalAnswer localAnswer : pollAnswerBodyRealmResults) {
+                        for (LocalEventAnswer localEventAnswer : pollAnswerBodyRealmResults) {
                             message = "Uploading: "+unPosted+" answers.";
                             broadcastIntent.putExtra(PARAM_OUT_MSG, message);
                             sendBroadcast(broadcastIntent);
                             SystemClock.sleep(3000);
 
-                            String uploadedFilename = uploadWorker.postImage(localAnswer.origImage);
+                            String uploadedFilename = uploadWorker.postImage(localEventAnswer.origImage);
 
                             realm.beginTransaction();
-                            localAnswer.image = uploadedFilename;
-                            PollAnswerResponse pollAnswerResponse = uploadWorker.postAnswer(localAnswer);
-                            localAnswer.isPosted = true;
+                            localEventAnswer.image = uploadedFilename;
+                            PollAnswerResponse pollAnswerResponse = uploadWorker.postAnswer(localEventAnswer);
+                            localEventAnswer.isPosted = true;
 
-                            realm.copyToRealmOrUpdate(localAnswer);
+                            realm.copyToRealmOrUpdate(localEventAnswer);
                             realm.copyToRealmOrUpdate(pollAnswerResponse.getData());
                             realm.commitTransaction();
                             unPosted--;
