@@ -22,6 +22,4 @@ public interface LoginView {
     void setLoginNameError();
 
     void setPasswordError();
-
-    void hideKeyboard();
 }

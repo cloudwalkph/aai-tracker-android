@@ -1,7 +1,7 @@
 package com.cloudwalkph.aaitrackerandroid.lib.ui;
 
+import android.app.Activity;
 import android.content.Context;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 /**
@@ -9,9 +9,9 @@ import android.view.inputmethod.InputMethodManager;
  */
 public class UiUtils {
 
-    public static void hideKeyboard(Context context, View field) {
-        InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(
                 Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(field.getWindowToken(), 0);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 }

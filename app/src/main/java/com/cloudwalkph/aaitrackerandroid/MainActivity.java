@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
+import com.cloudwalkph.aaitrackerandroid.lib.ui.UiUtils;
 import com.cloudwalkph.aaitrackerandroid.service.UploadService;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.OnBackPressedListener;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenController;
@@ -139,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
                 int rawX = (int)ev.getRawX();
                 int rawY = (int)ev.getRawY();
                 if (!r.contains(rawX, rawY)) {
-                    view.clearFocus();
+                    UiUtils.hideKeyboard(this);
                 }
             }
         }

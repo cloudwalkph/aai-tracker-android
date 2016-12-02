@@ -84,7 +84,7 @@ public class LoginViewImpl extends BaseFragment implements LoginView, ScreenCont
     @OnClick(R.id.login_submit_button)
     public void login(View view) {
         presenter.login();
-        hideKeyboard();
+        UiUtils.hideKeyboard(getActivity());
     }
 
     @Override
@@ -136,11 +136,6 @@ public class LoginViewImpl extends BaseFragment implements LoginView, ScreenCont
     public void setPasswordError() {
         Log.d(TAG,"setPasswordError ");
         password.setError("This field can not be blank");
-    }
-
-    @Override
-    public void hideKeyboard() {
-        UiUtils.hideKeyboard(getActivity(), password);
     }
 
 }
