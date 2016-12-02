@@ -147,6 +147,12 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(uploadServiceReceiver);
+        try {
+            if (uploadServiceReceiver != null) {
+                unregisterReceiver(uploadServiceReceiver);
+            }
+        } catch (IllegalArgumentException e) {
+            uploadServiceReceiver = null;
+        }
     }
 }
