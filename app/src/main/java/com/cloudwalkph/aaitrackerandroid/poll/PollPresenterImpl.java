@@ -1,6 +1,6 @@
 package com.cloudwalkph.aaitrackerandroid.poll;
 
-import com.cloudwalkph.aaitrackerandroid.lib.model.LocalAnswer;
+import com.cloudwalkph.aaitrackerandroid.lib.model.LocalEventAnswer;
 import com.cloudwalkph.aaitrackerandroid.lib.model.LocalPollAnswer;
 import com.cloudwalkph.aaitrackerandroid.lib.model.TokenOwner;
 
@@ -42,18 +42,18 @@ public class PollPresenterImpl implements PollPresenter {
         localPollAnswers.add(answer1);
         localPollAnswers.add(answer2);
 
-        LocalAnswer localAnswer = new LocalAnswer();
-        localAnswer.eventId = eventId;
-        localAnswer.eventLocationId = eventLocationId;
-        localAnswer.uuid = uuid;
-        localAnswer.userId = userId;
-        localAnswer.origImage = image;
-        localAnswer.localPollAnswers = localPollAnswers;
-        localAnswer.isPosted = false;
+        LocalEventAnswer localEventAnswer = new LocalEventAnswer();
+        localEventAnswer.eventId = eventId;
+        localEventAnswer.eventLocationId = eventLocationId;
+        localEventAnswer.uuid = uuid;
+        localEventAnswer.userId = userId;
+        localEventAnswer.origImage = image;
+        localEventAnswer.localPollAnswers = localPollAnswers;
+        localEventAnswer.isPosted = false;
 
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-        realm.copyToRealmOrUpdate(localAnswer);
+        realm.copyToRealmOrUpdate(localEventAnswer);
         realm.commitTransaction();
         realm.close();
 

@@ -1,7 +1,7 @@
 package com.cloudwalkph.aaitrackerandroid.service;
 
 import com.cloudwalkph.aaitrackerandroid.lib.api.ServiceGenerator;
-import com.cloudwalkph.aaitrackerandroid.lib.model.LocalAnswer;
+import com.cloudwalkph.aaitrackerandroid.lib.model.LocalEventAnswer;
 import com.cloudwalkph.aaitrackerandroid.lib.model.LocalPollAnswer;
 import com.cloudwalkph.aaitrackerandroid.service.api.UploadClient;
 import com.cloudwalkph.aaitrackerandroid.service.api.AnswerBody;
@@ -39,14 +39,14 @@ public class UploadWorkerImpl implements UploadWorker {
     }
 
     @Override
-    public PollAnswerResponse postAnswer(LocalAnswer localAnswer) throws IOException {
+    public PollAnswerResponse postAnswer(LocalEventAnswer localEventAnswer) throws IOException {
         AnswerBody answerBody = new AnswerBody();
-        answerBody.uuid = localAnswer.uuid;
-        answerBody.userId = localAnswer.userId;
-        answerBody.image = localAnswer.image;
+        answerBody.uuid = localEventAnswer.uuid;
+        answerBody.userId = localEventAnswer.userId;
+        answerBody.image = localEventAnswer.image;
 
         List<PollAnswerBody> pollAnswerBodies = new ArrayList<PollAnswerBody>();
-        for (LocalPollAnswer localPollAnswer : localAnswer.localPollAnswers) {
+        for (LocalPollAnswer localPollAnswer : localEventAnswer.localPollAnswers) {
             PollAnswerBody pollAnswerBody = new PollAnswerBody();
             pollAnswerBody.pollId = localPollAnswer.pollId;
             pollAnswerBody.value = localPollAnswer.value;
@@ -56,7 +56,7 @@ public class UploadWorkerImpl implements UploadWorker {
 
 
         UploadClient client = ServiceGenerator.createService(UploadClient.class);
-        Call<PollAnswerResponse> call = client.postAnswer(localAnswer.eventId, localAnswer.eventLocationId, answerBody);
+        Call<PollAnswerResponse> call = client.postAnswer(localEventAnswer.eventId, localEventAnswer.eventLocationId, answerBody);
         PollAnswerResponse pollAnswerResponse = call.execute().body();
 
         return pollAnswerResponse;

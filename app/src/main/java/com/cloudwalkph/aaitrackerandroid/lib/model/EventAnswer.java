@@ -25,7 +25,7 @@ public class EventAnswer extends RealmObject {
     private String updatedAt;
     @SerializedName("created_at")
     private String createdAt;
-    private RealmList<Answer> answers = new RealmList<Answer>();
+    private RealmList<PollAnswer> pollAnswers = new RealmList<PollAnswer>();
 
 
     /**
@@ -175,18 +175,18 @@ public class EventAnswer extends RealmObject {
     /**
      *
      * @return
-     * The answers
+     * The pollAnswers
      */
-    public RealmList<Answer> getAnswers() {
-        return answers;
+    public RealmList<PollAnswer> getPollAnswers() {
+        return pollAnswers;
     }
 
     /**
      *
-     * @param answers
-     * The answers
+     * @param pollAnswers
+     * The pollAnswers
      */
-    public void setAnswers(RealmList<Answer> answers) {
-        this.answers = answers;
+    public void setPollAnswers(RealmList<PollAnswer> pollAnswers) {
+        this.pollAnswers = pollAnswers;
     }
 }
