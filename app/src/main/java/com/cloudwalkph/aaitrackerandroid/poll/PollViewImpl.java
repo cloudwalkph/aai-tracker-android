@@ -5,10 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -47,6 +51,8 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     File imageFile;
     String selectedGender;
     String selectedAge;
+
+    Integer hitCount = 0;
 
     @BindView(R.id.picture)
     ImageView profilePic;
@@ -96,6 +102,10 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
         initializePresenter();
         initializeScreenController();
         initializeView(rootView);
+
+        initializeHitCount();
+
+        setHasOptionsMenu(true);
         return rootView;
     }
 
@@ -114,6 +124,20 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
         selectedGender = "";
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setCancelable(false);
+    }
+
+    private void initializeHitCount() {
+        hitCount = presenter.loadHitCount();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_main, menu);
+
+        MenuItem item = menu.findItem(R.id.hitCount);
+
+        item.setTitle(hitCount + " hits");
     }
 
     @OnClick(R.id.picture)
@@ -218,6 +242,8 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
 
     @Override
     public void resetForm() {
+        hitCount = presenter.loadHitCount();
+        ActivityCompat.invalidateOptionsMenu(getActivity());
         imageFile = null;
         selectedAge = "";
         selectedGender = "";

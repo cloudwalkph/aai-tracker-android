@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import io.realm.Realm;
 import io.realm.RealmList;
+import io.realm.RealmResults;
 
 /**
  * Created by trick.sunga on 22/11/2016.
@@ -20,6 +21,17 @@ public class PollPresenterImpl implements PollPresenter {
 
     public PollPresenterImpl(PollView view) {
         this.view = view;
+    }
+
+    @Override
+    public int loadHitCount() {
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<LocalEventAnswer> localEventAnswerRealmResults = realm
+                .where(LocalEventAnswer.class)
+                .equalTo("eventId", "1")
+                .equalTo("eventLocationId", "1")
+                .findAll();
+        return localEventAnswerRealmResults.size();
     }
 
     @Override

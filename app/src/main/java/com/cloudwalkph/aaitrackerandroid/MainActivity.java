@@ -8,6 +8,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -25,6 +28,8 @@ import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
 import java.util.regex.Pattern;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -35,10 +40,14 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
     OnBackPressedListener onBackPressedListener;
     UploadServiceReceiver uploadServiceReceiver;
 
+    @BindView(R.id.main_toolbar)
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration
@@ -68,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
                 .saveInRootPicturesDirectory(); //if you want to use internal memory for storying images - default
 
         initializeServices();
+        initializeToolbar();
         initializeScreenController();
         navigateToLoginScreen();
     }
@@ -91,6 +101,11 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
         // Service
         Intent intent = new Intent(this, UploadService.class);
         startService(intent);
+    }
+
+    private void initializeToolbar() {
+        setSupportActionBar(toolbar);
+        toolbar.setLogo(null);
     }
 
     private void initializeScreenController() {
@@ -142,6 +157,37 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
                         finish();
                     }
                 }).create().show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menu.clear();
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up generic_button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        switch(id) {
+            case R.id.actionEventSelect:
+//                screenController.removeAllOtherScreens();
+//                screenController.navigateToScreen(new EventSelectionViewImpl(), EventSelectionView.TAG);
+                break;
+            case R.id.actionViewResult:
+//                screenController.removeAllOtherScreens();
+//                screenController.navigateToScreen(new ResultsViewImpl(), ResultsView.TAG);
+                break;
+            case R.id.actionLogout:
+                exitApp();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

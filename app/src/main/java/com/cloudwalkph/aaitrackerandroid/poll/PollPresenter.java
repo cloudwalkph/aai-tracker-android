@@ -8,5 +8,7 @@ import okhttp3.MultipartBody;
 
 public interface PollPresenter {
 
+    int loadHitCount();
+
     void saveAnswer(String age, String gender, String image);
 }

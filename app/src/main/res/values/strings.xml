@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">AAITrackerAndroid</string>
 
+    <!--Menu items-->
+    <string name="actionEventSelect">Select event</string>
+    <string name="actionViewResult">View results</string>
+    <string name="actionLogout">Logout</string>
+
     <!--Login-->
     <string name="login_subtitle">Please log in to access AAI Tracker.</string>
     <string name="login_email">Username</string>
