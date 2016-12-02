@@ -55,8 +55,6 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginWorkerListener
         AccessToken.getInstance().setAccessToken(accessToken.getAccessToken());
         AccessToken.getInstance().setTokenType(accessToken.getTokenType());
 
-        view.setContainerVisible(true);
-        view.setProgressDialogVisible(false);
         fetchTokenOwner(accessToken);
     }
 
@@ -76,6 +74,8 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginWorkerListener
         TokenOwner.getInstance().setEmail(TokenOwner.getEmail());
         TokenOwner.getInstance().setCompany(TokenOwner.getCompany());
 
+        view.setContainerVisible(true);
+        view.setProgressDialogVisible(false);
         view.setLoginSuccessful();
     }
 
