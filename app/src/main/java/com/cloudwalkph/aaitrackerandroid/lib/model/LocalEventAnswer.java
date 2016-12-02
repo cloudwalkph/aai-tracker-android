@@ -23,6 +23,8 @@ public class LocalEventAnswer extends RealmObject {
     public String userId;
     public String origImage;
     public String image;
+    @SerializedName("hit_date")
+    public String hitDate;
     public RealmList<LocalPollAnswer> localPollAnswers;
     public boolean isPosted;
 }

@@ -14,6 +14,8 @@ public class AnswerBody {
     @SerializedName("user_id")
     public String userId;
     public String image;
+    @SerializedName("hit_date")
+    public String hitDate;
     @SerializedName("answers")
     public List<PollAnswerBody> pollAnswerBodies;
 

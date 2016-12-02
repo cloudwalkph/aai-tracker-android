@@ -4,6 +4,8 @@ import com.cloudwalkph.aaitrackerandroid.lib.model.LocalEventAnswer;
 import com.cloudwalkph.aaitrackerandroid.lib.model.LocalPollAnswer;
 import com.cloudwalkph.aaitrackerandroid.lib.model.TokenOwner;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.UUID;
 
 import io.realm.Realm;
@@ -30,6 +32,10 @@ public class PollPresenterImpl implements PollPresenter {
         String uuid = UUID.randomUUID().toString();
         String userId = String.valueOf(TokenOwner.getInstance().getId());
 
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String hitDate = df.format(c.getTime());
+
         LocalPollAnswer answer1 = new LocalPollAnswer();
         answer1.pollId = "1";
         answer1.value = age;
@@ -48,6 +54,7 @@ public class PollPresenterImpl implements PollPresenter {
         localEventAnswer.uuid = uuid;
         localEventAnswer.userId = userId;
         localEventAnswer.origImage = image;
+        localEventAnswer.hitDate = hitDate;
         localEventAnswer.localPollAnswers = localPollAnswers;
         localEventAnswer.isPosted = false;
 

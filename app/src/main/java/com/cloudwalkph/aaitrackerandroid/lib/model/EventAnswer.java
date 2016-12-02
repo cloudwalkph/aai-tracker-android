@@ -21,6 +21,8 @@ public class EventAnswer extends RealmObject {
     @SerializedName("event_location_id")
     private String eventLocationId;
     private String image;
+    @SerializedName("hit_date")
+    private String hitDate;
     @SerializedName("updated_at")
     private String updatedAt;
     @SerializedName("created_at")
@@ -134,6 +136,24 @@ public class EventAnswer extends RealmObject {
      */
     public void setImage(String image) {
         this.image = image;
+    }
+
+    /**
+     *
+     * @param hitDate
+     * The hitDate
+     */
+    public void setHitDate(String hitDate) {
+        this.hitDate = hitDate;
+    }
+
+    /**
+     *
+     * @return
+     * The hitDate
+     */
+    public String getHitDate() {
+        return hitDate;
     }
 
     /**
