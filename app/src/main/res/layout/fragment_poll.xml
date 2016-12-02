@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,46 +16,53 @@
         android:weightSum="1"
         android:background="#ffffff">
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:layout_margin="50dp">
+            android:layout_margin="50dp"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_width="250px"
-                android:layout_height="250px"
+                android:layout_width="400px"
+                android:layout_height="400px"
                 app:srcCompat="@drawable/camera"
-                android:id="@+id/picture" />
-
-
+                android:id="@+id/picture"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:text="Gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView3" />
+                android:id="@+id/textView3"
+                android:textSize="25dp" />
 
-            <RadioGroup
-                android:id="@+id/genderGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+            <org.apmem.tools.layouts.FlowLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:f="http://schemas.android.com/apk/res-auto"
+                android:orientation="horizontal"
+                f:weightDefault="1.0"
+                f:layoutDirection="ltr"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
-                <RadioButton
-                    android:id="@+id/genderMale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <Button
+                    android:layout_width="125dp"
+                    android:layout_height="80dp"
                     android:text="Male"
-                    android:checked="true" />
-
-                <RadioButton
+                    android:id="@+id/genderMale"
+                    android:background="@color/medix_gray"
+                    android:layout_margin="10dp" />
+                <Button
+                    android:layout_width="125dp"
+                    android:layout_height="80dp"
+                    android:text="Female"
                     android:id="@+id/genderFemale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Female" />
+                    android:background="@color/medix_gray"
+                    android:layout_margin="10dp" />
 
-            </RadioGroup>
+            </org.apmem.tools.layouts.FlowLayout>
 
 
 
@@ -61,43 +70,51 @@
                 android:text="Age group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView4" />
+                android:id="@+id/textView4"
+                android:textSize="25dp" />
 
+            <org.apmem.tools.layouts.FlowLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:f="http://schemas.android.com/apk/res-auto"
+                android:orientation="horizontal"
+                f:weightDefault="1.0"
+                f:layoutDirection="ltr"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
-
-            <RadioGroup
-                android:id="@+id/ageGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <RadioButton
-                    android:id="@+id/age1520"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <Button
+                    android:layout_width="125dp"
+                    android:layout_height="80dp"
                     android:text="15 - 20"
-                    android:checked="true" />
-
-                <RadioButton
+                    android:id="@+id/age1520"
+                    android:background="@color/medix_gray"
+                    android:layout_margin="10dp" />
+                <Button
+                    android:layout_width="125dp"
+                    android:layout_height="80dp"
+                    android:text="21 - 25"
                     android:id="@+id/age2125"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="21 - 25" />
-
-                <RadioButton
+                    android:background="@color/medix_gray"
+                    android:layout_margin="10dp" />
+                <Button
+                    android:layout_width="125dp"
+                    android:layout_height="80dp"
+                    android:text="26 - 30"
                     android:id="@+id/age2630"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="26 - 30" />
-
-                <RadioButton
+                    android:background="@color/medix_gray"
+                    android:layout_margin="10dp" />
+                <Button
+                    android:layout_width="125dp"
+                    android:layout_height="80dp"
+                    android:text="31 - 35"
                     android:id="@+id/age3135"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="31 - 35" />
+                    android:background="@color/medix_gray"
+                    android:layout_margin="10dp" />
 
-            </RadioGroup>
+            </org.apmem.tools.layouts.FlowLayout>
 
-        </TableLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <Button
