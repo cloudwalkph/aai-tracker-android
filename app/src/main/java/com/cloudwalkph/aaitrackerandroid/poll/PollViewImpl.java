@@ -181,7 +181,7 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
 
     ButterKnife.Action<View> RESET_BUTTONS = new ButterKnife.Action<View>() {
         @Override public void apply(View view, int index) {
-            view.setBackgroundColor(getResources().getColor(R.color.medix_dark_gray));
+            view.setBackgroundColor(medixGray);
         }
     };
 
