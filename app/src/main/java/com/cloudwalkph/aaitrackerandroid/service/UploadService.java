@@ -33,7 +33,7 @@ public class UploadService extends IntentService {
             Realm realm = null;
             try {
                 realm = Realm.getDefaultInstance();
-                RealmResults<LocalEventAnswer> pollAnswerBodyRealmResults = realm
+                RealmResults<LocalEventAnswer> localEventAnswerRealmResults = realm
                         .where(LocalEventAnswer.class)
                         .equalTo("isPosted", false)
                         .findAll();
@@ -44,11 +44,11 @@ public class UploadService extends IntentService {
                 broadcastIntent.addCategory(Intent.CATEGORY_DEFAULT);
 
                 if(isInternetAvailable()) {
-                    if(pollAnswerBodyRealmResults.size() == 0) {
+                    if(localEventAnswerRealmResults.size() == 0) {
                         message = "All answers has been uploaded.";
                     } else {
-                        int unPosted = pollAnswerBodyRealmResults.size();
-                        for (LocalEventAnswer localEventAnswer : pollAnswerBodyRealmResults) {
+                        int unPosted = localEventAnswerRealmResults.size();
+                        for (LocalEventAnswer localEventAnswer : localEventAnswerRealmResults) {
                             message = "Uploading: "+unPosted+" answers.";
                             broadcastIntent.putExtra(PARAM_OUT_MSG, message);
                             sendBroadcast(broadcastIntent);
@@ -68,18 +68,15 @@ public class UploadService extends IntentService {
                         }
                     }
                 } else {
-                    if(pollAnswerBodyRealmResults.size() > 0) {
-                        message = "No connection. Pending: "+pollAnswerBodyRealmResults.size()+" answers.";
+                    if(localEventAnswerRealmResults.size() > 0) {
+                        message = "No connection. Pending: "+localEventAnswerRealmResults.size()+" answers.";
                     }
                 }
                 broadcastIntent.putExtra(PARAM_OUT_MSG, message);
                 sendBroadcast(broadcastIntent);
+                realm.close();
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally {
-                if(realm != null) {
-                    realm.close();
-                }
             }
             SystemClock.sleep(5000);
         }
