@@ -21,7 +21,7 @@ import com.cloudwalkph.aaitrackerandroid.lib.ui.UiUtils;
 import com.cloudwalkph.aaitrackerandroid.poll.PollView;
 import com.cloudwalkph.aaitrackerandroid.poll.PollViewImpl;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -35,11 +35,11 @@ public class LoginViewImpl extends BaseFragment implements LoginView, ScreenCont
     View rootView;
     ProgressDialog progressDialog;
 
-    @Bind(R.id.login_username)
+    @BindView(R.id.login_username)
     EditText username;
-    @Bind(R.id.login_password)
+    @BindView(R.id.login_password)
     EditText password;
-    @Bind(R.id.login_submit_button)
+    @BindView(R.id.login_submit_button)
     Button submitButton;
 
     private ScreenController screenController;
