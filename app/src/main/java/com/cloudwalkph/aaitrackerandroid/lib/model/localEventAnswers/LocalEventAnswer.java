@@ -1,4 +1,4 @@
-package com.cloudwalkph.aaitrackerandroid.lib.model;
+package com.cloudwalkph.aaitrackerandroid.lib.model.localEventAnswers;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -14,9 +14,9 @@ import io.realm.annotations.PrimaryKey;
 public class LocalEventAnswer extends RealmObject {
 
     @SerializedName("event_id")
-    public String eventId;
+    public Integer eventId;
     @SerializedName("event_location_id")
-    public String eventLocationId;
+    public Integer eventLocationId;
     @PrimaryKey
     public String uuid;
     @SerializedName("user_id")

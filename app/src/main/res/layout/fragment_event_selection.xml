@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".MainActivity"
+        android:weightSum="1"
+        android:background="#ffffff"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="50dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="Select an event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventSpinner" />
+
+            <TextView
+                android:text="Select location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/locationSpinner" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:background="@drawable/generic_bottom_button_blue"
+        android:padding="30dp"
+        android:textColor="@color/medix_white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/eventSelectSubmit"
+        android:id="@+id/goToPoll"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:textSize="25dp" />
+
+</RelativeLayout>

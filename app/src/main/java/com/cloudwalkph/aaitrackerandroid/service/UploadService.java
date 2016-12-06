@@ -4,7 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.os.SystemClock;
 
-import com.cloudwalkph.aaitrackerandroid.lib.model.LocalEventAnswer;
+import com.cloudwalkph.aaitrackerandroid.lib.model.localEventAnswers.LocalEventAnswer;
 import com.cloudwalkph.aaitrackerandroid.service.api.PollAnswerResponse;
 
 import java.io.IOException;
@@ -90,6 +90,5 @@ public class UploadService extends IntentService {
         } catch (Exception e) {
             return false;
         }
-
     }
 }

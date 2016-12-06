@@ -133,6 +133,7 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
         inflater.inflate(R.menu.menu_main, menu);
 
         MenuItem item = menu.findItem(R.id.hitCount);
