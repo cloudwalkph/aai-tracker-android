@@ -36,7 +36,6 @@ public class PollPresenterImpl implements PollPresenter {
 
     @Override
     public void saveAnswer(String age, String gender, String image) {
-        view.setContainerVisible(false);
         view.setProgressDialogVisible(true);
 
         String eventId = "1";
@@ -76,7 +75,6 @@ public class PollPresenterImpl implements PollPresenter {
         realm.commitTransaction();
         realm.close();
 
-        view.setContainerVisible(true);
         view.setProgressDialogVisible(false);
         view.showSuccessDialog();
         view.resetForm();

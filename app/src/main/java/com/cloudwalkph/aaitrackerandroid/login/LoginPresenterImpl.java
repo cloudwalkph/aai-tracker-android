@@ -17,7 +17,6 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginWorkerListener
 
     @Override
     public void login() {
-        view.setContainerVisible(false);
         view.setProgressDialogVisible(true);
         //TODO validation
         boolean hasError = false;
@@ -60,7 +59,6 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginWorkerListener
 
     @Override
     public void onLoginFail(String message) {
-        view.setContainerVisible(true);
         view.setProgressDialogVisible(false);
         view.setLoginFail(message);
     }
@@ -74,14 +72,12 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginWorkerListener
         TokenOwner.getInstance().setEmail(TokenOwner.getEmail());
         TokenOwner.getInstance().setCompany(TokenOwner.getCompany());
 
-        view.setContainerVisible(true);
         view.setProgressDialogVisible(false);
         view.setLoginSuccessful();
     }
 
     @Override
     public void onFetchOwnerFail(String message) {
-        view.setContainerVisible(true);
         view.setProgressDialogVisible(false);
         view.setLoginFail(message);
     }

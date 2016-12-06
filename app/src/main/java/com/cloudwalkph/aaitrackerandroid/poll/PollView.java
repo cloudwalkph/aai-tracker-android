@@ -10,8 +10,6 @@ public interface PollView {
 
     void setProgressDialogVisible(boolean visible);
 
-    void setContainerVisible(boolean visible);
-
     void showSuccessDialog();
 
     void resetForm();

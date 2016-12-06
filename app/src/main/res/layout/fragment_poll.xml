@@ -123,7 +123,7 @@
         android:textColor="@color/medix_white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/save_answer"
+        android:text="@string/saveAnswer"
         android:id="@+id/saveAnswer"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentBottom="true"

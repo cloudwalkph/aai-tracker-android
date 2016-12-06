@@ -7,11 +7,11 @@
     <string name="actionLogout">Logout</string>
 
     <!--Login-->
-    <string name="login_subtitle">Please log in to access AAI Tracker.</string>
-    <string name="login_email">Username</string>
-    <string name="login_password">Password</string>
-    <string name="login_submit">Login</string>
+    <string name="loginSubtitle">Please log in to access AAI Tracker.</string>
+    <string name="loginEmail">Username</string>
+    <string name="loginPassword">Password</string>
+    <string name="loginSubmit">Login</string>
 
     <!--Poll-->
-    <string name="save_answer">Save Answer</string>
+    <string name="saveAnswer">Save Answer</string>
 </resources>

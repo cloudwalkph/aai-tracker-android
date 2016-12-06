@@ -100,11 +100,6 @@ public class LoginViewImpl extends BaseFragment implements LoginView, ScreenCont
     }
 
     @Override
-    public void setContainerVisible(boolean visible) {
-        Log.d(TAG, "setContainerVisible " + visible);
-    }
-
-    @Override
     public String getLoginNameValue() {
         return username.getText().toString();
     }

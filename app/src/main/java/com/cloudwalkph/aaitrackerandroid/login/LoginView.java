@@ -9,8 +9,6 @@ public interface LoginView {
 
     void setProgressDialogVisible(boolean visible);
 
-    void setContainerVisible(boolean visible);
-
     String getLoginNameValue();
 
     String getPasswordValue();

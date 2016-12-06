@@ -222,11 +222,6 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     }
 
     @Override
-    public void setContainerVisible(boolean visible) {
-        Log.d(TAG, "setContainerVisible " + visible);
-    }
-
-    @Override
     public void showSuccessDialog() {
         AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
         alertDialog.setTitle("Success!");
