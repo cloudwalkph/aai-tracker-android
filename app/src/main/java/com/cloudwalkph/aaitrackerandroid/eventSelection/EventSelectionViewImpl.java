@@ -155,7 +155,7 @@ public class EventSelectionViewImpl extends BaseFragment implements EventSelecti
     public void setEvents(RealmList<Event> eventRealmList) {
         ArrayList<Event> events = new ArrayList<Event>();
         events.addAll(eventRealmList.subList(0, eventRealmList.size()));
-        ArrayAdapter<Event> adapter = new ArrayAdapter<Event>(getActivity(), android.R.layout.simple_spinner_item, events);
+        ArrayAdapter<Event> adapter = new ArrayAdapter<Event>(getActivity(), R.layout.spinner_item, events);
         eventSpinner.setAdapter(adapter);
     }
 
@@ -163,7 +163,7 @@ public class EventSelectionViewImpl extends BaseFragment implements EventSelecti
     public void setLocations(RealmList<Location> locationRealmList) {
         ArrayList<Location> locations = new ArrayList<Location>();
         locations.addAll(locationRealmList.subList(0, locationRealmList.size()));
-        ArrayAdapter<Location> adapter = new ArrayAdapter<Location>(getActivity(), android.R.layout.simple_spinner_item, locations);
+        ArrayAdapter<Location> adapter = new ArrayAdapter<Location>(getActivity(), R.layout.spinner_item, locations);
         locationSpinner.setAdapter(adapter);
     }
 
