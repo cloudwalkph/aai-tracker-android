@@ -13,13 +13,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cloudwalkph.aaitrackerandroid.R;
+import com.cloudwalkph.aaitrackerandroid.eventSelection.EventSelectionView;
+import com.cloudwalkph.aaitrackerandroid.eventSelection.EventSelectionViewImpl;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.BaseFragment;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenController;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenControllerImpl;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenControllerProvider;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.UiUtils;
-import com.cloudwalkph.aaitrackerandroid.poll.PollView;
-import com.cloudwalkph.aaitrackerandroid.poll.PollViewImpl;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -117,7 +117,7 @@ public class LoginViewImpl extends BaseFragment implements LoginView, ScreenCont
     @Override
     public void setLoginSuccessful() {
         Log.d(TAG, "setLoginSuccessful ");
-        screenController.navigateToScreen(new PollViewImpl(), PollView.TAG);
+        screenController.navigateToScreen(new EventSelectionViewImpl(), EventSelectionView.TAG);
     }
 
     @Override

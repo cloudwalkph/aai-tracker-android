@@ -1,7 +1,8 @@
 package com.cloudwalkph.aaitrackerandroid.poll;
 
-import com.cloudwalkph.aaitrackerandroid.lib.model.LocalEventAnswer;
-import com.cloudwalkph.aaitrackerandroid.lib.model.LocalPollAnswer;
+import com.cloudwalkph.aaitrackerandroid.lib.model.CurrentEventLocation;
+import com.cloudwalkph.aaitrackerandroid.lib.model.localEventAnswers.LocalEventAnswer;
+import com.cloudwalkph.aaitrackerandroid.lib.model.localEventAnswers.LocalPollAnswer;
 import com.cloudwalkph.aaitrackerandroid.lib.model.TokenOwner;
 
 import java.text.SimpleDateFormat;
@@ -25,11 +26,13 @@ public class PollPresenterImpl implements PollPresenter {
 
     @Override
     public int loadHitCount() {
+        CurrentEventLocation currentEventLocation = CurrentEventLocation.getInstance();
+
         Realm realm = Realm.getDefaultInstance();
         RealmResults<LocalEventAnswer> localEventAnswerRealmResults = realm
                 .where(LocalEventAnswer.class)
-                .equalTo("eventId", "1")
-                .equalTo("eventLocationId", "1")
+                .equalTo("eventId", currentEventLocation.getEventId())
+                .equalTo("eventLocationId", currentEventLocation.getEventLocationId())
                 .findAll();
         return localEventAnswerRealmResults.size();
     }
@@ -39,8 +42,10 @@ public class PollPresenterImpl implements PollPresenter {
         view.setContainerVisible(false);
         view.setProgressDialogVisible(true);
 
-        String eventId = "1";
-        String eventLocationId = "1";
+        CurrentEventLocation currentEventLocation = CurrentEventLocation.getInstance();
+
+        Integer eventId = currentEventLocation.getEventId();
+        Integer eventLocationId = currentEventLocation.getEventLocationId();
         String uuid = UUID.randomUUID().toString();
         String userId = String.valueOf(TokenOwner.getInstance().getId());
 

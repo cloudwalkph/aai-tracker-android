@@ -2,7 +2,6 @@
     <string name="app_name">AAITrackerAndroid</string>
 
     <!--Menu items-->
-    <string name="actionEventSelect">Select event</string>
     <string name="actionViewResult">View results</string>
     <string name="actionLogout">Logout</string>
 
@@ -11,6 +10,9 @@
     <string name="login_email">Username</string>
     <string name="login_password">Password</string>
     <string name="login_submit">Login</string>
+
+    <!--Event Selection-->
+    <string name="eventSelectSubmit">Go to poll</string>
 
     <!--Poll-->
     <string name="save_answer">Save Answer</string>

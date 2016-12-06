@@ -174,9 +174,8 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
         int id = item.getItemId();
 
         switch(id) {
-            case R.id.actionEventSelect:
-//                screenController.removeAllOtherScreens();
-//                screenController.navigateToScreen(new EventSelectionViewImpl(), EventSelectionView.TAG);
+            case android.R.id.home:
+                onBackPressed();
                 break;
             case R.id.actionViewResult:
 //                screenController.removeAllOtherScreens();

@@ -1,4 +1,4 @@
-package com.cloudwalkph.aaitrackerandroid.lib.model;
+package com.cloudwalkph.aaitrackerandroid.lib.model.eventAnswers;
 
 import com.google.gson.annotations.SerializedName;
 

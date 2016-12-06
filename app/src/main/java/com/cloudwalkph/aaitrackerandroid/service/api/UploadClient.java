@@ -19,7 +19,7 @@ public interface UploadClient {
     Call<PollImageResponse> postImage(@Part MultipartBody.Part image);
 
     @POST("/api/v1/events/{eventId}/event-locations/{eventLocationId}/answer")
-    Call<PollAnswerResponse> postAnswer(@Path("eventId") String eventId,
-                                        @Path("eventLocationId") String eventLocationId,
+    Call<PollAnswerResponse> postAnswer(@Path("eventId") Integer eventId,
+                                        @Path("eventLocationId") Integer eventLocationId,
                                         @Body AnswerBody answerBody);
 }

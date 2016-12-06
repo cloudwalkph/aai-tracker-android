@@ -1,6 +1,6 @@
 package com.cloudwalkph.aaitrackerandroid.service.api;
 
-import com.cloudwalkph.aaitrackerandroid.lib.model.EventAnswer;
+import com.cloudwalkph.aaitrackerandroid.lib.model.eventAnswers.EventAnswer;
 
 /**
  * Created by trick.sunga on 23/11/2016.

@@ -1,6 +1,6 @@
 package com.cloudwalkph.aaitrackerandroid.service;
 
-import com.cloudwalkph.aaitrackerandroid.lib.model.LocalEventAnswer;
+import com.cloudwalkph.aaitrackerandroid.lib.model.localEventAnswers.LocalEventAnswer;
 import com.cloudwalkph.aaitrackerandroid.service.api.PollAnswerResponse;
 
 import java.io.IOException;
