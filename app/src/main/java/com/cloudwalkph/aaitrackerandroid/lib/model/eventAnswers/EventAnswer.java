@@ -31,6 +31,7 @@ public class EventAnswer extends RealmObject {
     private String updatedAt;
     @SerializedName("created_at")
     private String createdAt;
+    @SerializedName("answers")
     private RealmList<PollAnswer> pollAnswers = new RealmList<PollAnswer>();
 
 
