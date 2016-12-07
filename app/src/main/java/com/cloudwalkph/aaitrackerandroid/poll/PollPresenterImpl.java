@@ -38,7 +38,7 @@ public class PollPresenterImpl implements PollPresenter {
     }
 
     @Override
-    public void saveAnswer(String age, String gender, String image) {
+    public void saveAnswer(String age, String gender, String image, String name, String contactNumber, String email) {
         view.setProgressDialogVisible(true);
 
         CurrentEventLocation currentEventLocation = CurrentEventLocation.getInstance();
@@ -71,6 +71,9 @@ public class PollPresenterImpl implements PollPresenter {
         localEventAnswer.userId = userId;
         localEventAnswer.origImage = image;
         localEventAnswer.hitDate = hitDate;
+        localEventAnswer.name = name;
+        localEventAnswer.contactNumber = contactNumber;
+        localEventAnswer.email = email;
         localEventAnswer.localPollAnswers = localPollAnswers;
         localEventAnswer.isPosted = false;
 

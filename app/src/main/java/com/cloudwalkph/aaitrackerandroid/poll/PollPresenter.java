@@ -10,5 +10,5 @@ public interface PollPresenter {
 
     int loadHitCount();
 
-    void saveAnswer(String age, String gender, String image);
+    void saveAnswer(String age, String gender, String image, String name, String contactNumber, String email);
 }

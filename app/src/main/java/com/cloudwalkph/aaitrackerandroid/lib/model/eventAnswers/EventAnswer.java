@@ -23,6 +23,10 @@ public class EventAnswer extends RealmObject {
     private String image;
     @SerializedName("hit_date")
     private String hitDate;
+    private String name;
+    @SerializedName("contact_number")
+    private String contactNumber;
+    private String email;
     @SerializedName("updated_at")
     private String updatedAt;
     @SerializedName("created_at")
@@ -140,6 +144,15 @@ public class EventAnswer extends RealmObject {
 
     /**
      *
+     * @return
+     * The hitDate
+     */
+    public String getHitDate() {
+        return hitDate;
+    }
+
+    /**
+     *
      * @param hitDate
      * The hitDate
      */
@@ -149,11 +162,56 @@ public class EventAnswer extends RealmObject {
 
     /**
      *
-     * @return
-     * The hitDate
+     * @param name
+     * The name
      */
-    public String getHitDate() {
-        return hitDate;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     *
+     * @return
+     * The name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     *
+     * @param contactNumber
+     * The contactNumber
+     */
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    /**
+     *
+     * @return
+     * The contactNumber
+     */
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    /**
+     *
+     * @param email
+     * The email
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     *
+     * @return
+     * The email
+     */
+    public String getEmail() {
+        return email;
     }
 
     /**

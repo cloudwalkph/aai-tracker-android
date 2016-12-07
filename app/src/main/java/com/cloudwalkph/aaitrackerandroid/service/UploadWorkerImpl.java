@@ -45,6 +45,9 @@ public class UploadWorkerImpl implements UploadWorker {
         answerBody.userId = localEventAnswer.userId;
         answerBody.image = localEventAnswer.image;
         answerBody.hitDate = localEventAnswer.hitDate;
+        answerBody.name = localEventAnswer.name;
+        answerBody.contactNumber= localEventAnswer.contactNumber;
+        answerBody.email = localEventAnswer.email;
 
         List<PollAnswerBody> pollAnswerBodies = new ArrayList<PollAnswerBody>();
         for (LocalPollAnswer localPollAnswer : localEventAnswer.localPollAnswers) {

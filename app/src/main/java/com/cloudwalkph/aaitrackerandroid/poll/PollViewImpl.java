@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,7 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.cloudwalkph.aaitrackerandroid.R;
@@ -34,6 +37,7 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -51,8 +55,14 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     File imageFile;
     String selectedGender;
     String selectedAge;
+    String name;
+    String contactNumber;
+    String email;
 
     Integer hitCount = 0;
+
+    @BindView(R.id.scrollView)
+    ScrollView scrollView;
 
     @BindView(R.id.picture)
     ImageView profilePic;
@@ -77,11 +87,19 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     @BindViews({R.id.age1520, R.id.age2125, R.id.age2630, R.id.age3135})
     List<Button> ageButtons;
 
+    @BindView(R.id.answerName)
+    EditText answerName;
+    @BindView(R.id.answerContactNumber)
+    EditText answerContactNumber;
+    @BindView(R.id.answerEmail)
+    EditText answerEmail;
+    @BindViews({R.id.answerName, R.id.answerContactNumber, R.id.answerEmail})
+    List<EditText> textFields;
+
     @BindColor(R.color.medix_gray)
     int medixGray;
     @BindColor(R.color.medix_blue)
     int medixBlue;
-
 
     private ScreenController screenController;
 
@@ -122,6 +140,9 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
 
         selectedAge = "";
         selectedGender = "";
+        name = "";
+        contactNumber = "";
+        email = "";
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setCancelable(false);
     }
@@ -190,6 +211,21 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
         Log.d("SELECTAGE", selectedAge);
     }
 
+    @OnTextChanged(value = R.id.answerName, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    public void setAnswerName(Editable editable) {
+        this.name = editable.toString();
+    }
+
+    @OnTextChanged(value = R.id.answerContactNumber, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    public void setAnswerContactNumber(Editable editable) {
+        this.contactNumber = editable.toString();
+    }
+
+    @OnTextChanged(value = R.id.answerEmail, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    public void setAnswerEmail(Editable editable) {
+        this.email = editable.toString();
+    }
+
     @OnClick(R.id.saveAnswer)
     public void saveAnswer(View view) {
         // validate
@@ -200,13 +236,20 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
         } else if(selectedAge.equals("")) {
             Toast.makeText(getActivity(), "Please select age.", Toast.LENGTH_LONG).show();
         } else {
-            presenter.saveAnswer(selectedAge, selectedGender, imageFile.getAbsolutePath());
+            presenter.saveAnswer(selectedAge, selectedGender, imageFile.getAbsolutePath(), name, contactNumber, email);
         }
     }
 
     ButterKnife.Action<View> RESET_BUTTONS = new ButterKnife.Action<View>() {
         @Override public void apply(View view, int index) {
             view.setBackgroundColor(medixGray);
+        }
+    };
+
+    ButterKnife.Action<EditText> RESET_FIELDS = new ButterKnife.Action<EditText>() {
+        @Override
+        public void apply(EditText editText, int index) {
+            editText.setText("");
         }
     };
 
@@ -240,11 +283,16 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     public void resetForm() {
         hitCount = presenter.loadHitCount();
         ActivityCompat.invalidateOptionsMenu(getActivity());
+        scrollView.fullScroll(scrollView.FOCUS_UP);
         imageFile = null;
         selectedAge = "";
         selectedGender = "";
+        name = "";
+        contactNumber = "";
+        email = "";
         ButterKnife.apply(genderButtons, RESET_BUTTONS);
         ButterKnife.apply(ageButtons, RESET_BUTTONS);
+        ButterKnife.apply(textFields, RESET_FIELDS);
         Picasso.with(getContext())
                 .load(R.drawable.camera)
                 .into(profilePic);
