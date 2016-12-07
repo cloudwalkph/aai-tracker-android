@@ -11,4 +11,7 @@ public interface EventsClient {
 
     @GET("/api/v1/events")
     Call<EventsResponse> getEvents();
+
+    @GET("/api/v1/events/hits/{eventId}/self")
+    Call<EventAnswersResponse> getEventAnswers();
 }
