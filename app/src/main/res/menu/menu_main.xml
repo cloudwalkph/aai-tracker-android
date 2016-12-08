@@ -11,6 +11,12 @@
         android:textAllCaps="false"/>
 
     <item
+        android:id="@+id/actionEventSelection"
+        android:orderInCategory="100"
+        android:title="@string/actionEventSelect"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/actionViewResult"
         android:orderInCategory="100"
         android:title="@string/actionViewResult"

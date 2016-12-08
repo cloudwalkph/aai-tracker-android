@@ -2,6 +2,7 @@
     <string name="app_name">AAITrackerAndroid</string>
 
     <!--Menu items-->
+    <string name="actionEventSelect">Select event</string>
     <string name="actionViewResult">View results</string>
     <string name="actionLogout">Logout</string>
 
