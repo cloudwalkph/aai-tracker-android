@@ -235,6 +235,8 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
             Toast.makeText(getActivity(), "Please select gender.", Toast.LENGTH_LONG).show();
         } else if(selectedAge.equals("")) {
             Toast.makeText(getActivity(), "Please select age.", Toast.LENGTH_LONG).show();
+        } else if (name.equals("")) {
+            Toast.makeText(getActivity(), "Please enter name.", Toast.LENGTH_LONG).show();
         } else {
             presenter.saveAnswer(selectedAge, selectedGender, imageFile.getAbsolutePath(), name, contactNumber, email);
         }
