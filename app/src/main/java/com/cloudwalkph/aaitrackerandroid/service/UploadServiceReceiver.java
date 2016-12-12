@@ -36,8 +36,6 @@ public class UploadServiceReceiver extends BroadcastReceiver {
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) snackBarView.getLayoutParams();
         params.gravity = Gravity.TOP;
         snackBarView.setLayoutParams(params);
-
-        snackbar.show();
     }
 
     @Override
