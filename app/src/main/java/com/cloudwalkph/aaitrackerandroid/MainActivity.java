@@ -15,7 +15,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
+import com.cloudwalkph.aaitrackerandroid.eventSelection.EventSelectionView;
+import com.cloudwalkph.aaitrackerandroid.eventSelection.EventSelectionViewImpl;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.UiUtils;
+import com.cloudwalkph.aaitrackerandroid.results.ResultView;
+import com.cloudwalkph.aaitrackerandroid.results.ResultViewImpl;
 import com.cloudwalkph.aaitrackerandroid.service.UploadService;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.OnBackPressedListener;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenController;
@@ -178,9 +182,13 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
             case android.R.id.home:
                 onBackPressed();
                 break;
+            case R.id.actionEventSelection:
+                screenController.removeAllOtherScreens();
+                screenController.navigateToScreen(new EventSelectionViewImpl(), EventSelectionView.TAG);
+                break;
             case R.id.actionViewResult:
-//                screenController.removeAllOtherScreens();
-//                screenController.navigateToScreen(new ResultsViewImpl(), ResultsView.TAG);
+                screenController.removeAllOtherScreens();
+                screenController.navigateToScreen(new ResultViewImpl(), ResultView.TAG);
                 break;
             case R.id.actionLogout:
                 exitApp();

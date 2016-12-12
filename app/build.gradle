@@ -76,4 +76,9 @@ dependencies {
      * FlowLayout
      */
     compile 'org.apmem.tools:layouts:1.10@aar'
+
+    /**
+     * RealmRecyclerView
+     */
+    compile 'com.github.thorbenprimke:realm-recyclerview:0.9.25'
 }
