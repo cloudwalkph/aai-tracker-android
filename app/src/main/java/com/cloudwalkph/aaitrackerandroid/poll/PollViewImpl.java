@@ -329,4 +329,10 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
             }
         });
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle("");
+    }
 }
