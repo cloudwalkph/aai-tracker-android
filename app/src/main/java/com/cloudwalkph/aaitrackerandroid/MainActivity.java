@@ -109,8 +109,8 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
     }
 
     private void initializeToolbar() {
-        setSupportActionBar(toolbar);
-        toolbar.setLogo(null);
+//        setSupportActionBar(toolbar);
+//        toolbar.setLogo(null);
     }
 
     private void initializeScreenController() {

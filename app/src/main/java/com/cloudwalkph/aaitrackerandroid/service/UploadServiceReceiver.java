@@ -23,11 +23,17 @@ public class UploadServiceReceiver extends BroadcastReceiver {
 
     public UploadServiceReceiver(Activity activity) {
         snackbar = Snackbar.make(activity.findViewById(R.id.coordinator_layout), "", Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction("Dismiss", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                snackbar.dismiss();
+            }
+        });
         View snackBarView = snackbar.getView();
         // bgcolor
         snackBarView.setBackgroundColor(ContextCompat.getColor(activity, R.color.medix_gray));
         // move to top
-        CoordinatorLayout.LayoutParams params =(CoordinatorLayout.LayoutParams)snackBarView.getLayoutParams();
+        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) snackBarView.getLayoutParams();
         params.gravity = Gravity.TOP;
         snackBarView.setLayoutParams(params);
 
@@ -38,5 +44,6 @@ public class UploadServiceReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String message = intent.getStringExtra(UploadService.PARAM_OUT_MSG);
         snackbar.setText(message);
+        if(!snackbar.isShown()) snackbar.show();
     }
 }
