@@ -23,6 +23,7 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.cloudwalkph.aaitrackerandroid.R;
+import com.cloudwalkph.aaitrackerandroid.lib.model.CurrentEventLocation;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.BaseFragment;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenController;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenControllerImpl;
@@ -137,6 +138,10 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
 
     private void initializeView(View rootView){
         ButterKnife.bind(this, rootView);
+
+        String currentEvent = CurrentEventLocation.getInstance().getEventName();
+        String currentLocation = CurrentEventLocation.getInstance().getEventLocationName();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(currentEvent + " - " + currentLocation);
 
         selectedAge = "";
         selectedGender = "";

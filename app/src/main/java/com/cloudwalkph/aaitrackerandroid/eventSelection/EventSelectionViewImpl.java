@@ -48,7 +48,9 @@ public class EventSelectionViewImpl extends BaseFragment implements EventSelecti
     ProgressDialog progressDialog;
 
     Integer eventId;
+    String eventName;
     Integer eventLocationId;
+    String eventLocationName;
 
     @BindView(R.id.eventSpinner)
     Spinner eventSpinner;
@@ -117,6 +119,7 @@ public class EventSelectionViewImpl extends BaseFragment implements EventSelecti
     public void selectEvent(Spinner spinner) {
         Event event = (Event)spinner.getSelectedItem();
         this.eventId = event.getEventId();
+        this.eventName = event.getName();
         presenter.loadLocations(event.getEventId());
     }
 
@@ -124,6 +127,7 @@ public class EventSelectionViewImpl extends BaseFragment implements EventSelecti
     public void selectLocation(Spinner spinner) {
         Location location = (Location)spinner.getSelectedItem();
         this.eventLocationId = location.getId();
+        this.eventLocationName = location.getName();
     }
 
     @OnClick(R.id.goToPoll)
@@ -135,7 +139,9 @@ public class EventSelectionViewImpl extends BaseFragment implements EventSelecti
         } else {
             CurrentEventLocation currentEventLocation = CurrentEventLocation.getInstance();
             currentEventLocation.setEventId(this.eventId);
+            currentEventLocation.setEventName(this.eventName);
             currentEventLocation.setEventLocationId(this.eventLocationId);
+            currentEventLocation.setEventLocationName(this.eventLocationName);
             screenController.addScreen(new PollViewImpl(), PollView.TAG);
         }
     }
