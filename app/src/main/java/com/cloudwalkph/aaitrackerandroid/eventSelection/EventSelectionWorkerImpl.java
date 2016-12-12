@@ -3,8 +3,10 @@ package com.cloudwalkph.aaitrackerandroid.eventSelection;
 import com.cloudwalkph.aaitrackerandroid.eventSelection.api.EventsClient;
 import com.cloudwalkph.aaitrackerandroid.eventSelection.api.EventsResponse;
 import com.cloudwalkph.aaitrackerandroid.lib.api.ServiceGenerator;
+import com.cloudwalkph.aaitrackerandroid.lib.model.events.Choice;
 import com.cloudwalkph.aaitrackerandroid.lib.model.events.Event;
 import com.cloudwalkph.aaitrackerandroid.lib.model.events.Location;
+import com.cloudwalkph.aaitrackerandroid.lib.model.events.Poll;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -36,6 +38,10 @@ public class EventSelectionWorkerImpl implements EventSelectionWorker {
                     Realm realm = Realm.getDefaultInstance();
                     RealmList<Event> eventRealmList = eventsResponse.getEvents();
                     realm.beginTransaction();
+                    realm.delete(Event.class);
+                    realm.delete(Location.class);
+                    realm.delete(Poll.class);
+                    realm.delete(Choice.class);
                     realm.copyToRealmOrUpdate(eventRealmList);
                     realm.commitTransaction();
                     listener.onLoadEventsSuccess(eventRealmList);
@@ -46,14 +52,15 @@ public class EventSelectionWorkerImpl implements EventSelectionWorker {
 
             @Override
             public void onFailure(Call<EventsResponse> call, Throwable t) {
+                listener.onLoadEventsFail("Problem loading events");
                 // something went completely south (like no internet connection)
-                Realm realm = Realm.getDefaultInstance();
-                RealmResults<Event> eventRealmResults = realm.where(Event.class).findAll();
-
-                RealmList<Event> eventRealmList = new RealmList<>();
-                eventRealmList.addAll(eventRealmResults.subList(0, eventRealmResults.size()));
-
-                listener.onLoadEventsSuccess(eventRealmList);
+//                Realm realm = Realm.getDefaultInstance();
+//                RealmResults<Event> eventRealmResults = realm.where(Event.class).findAll();
+//
+//                RealmList<Event> eventRealmList = new RealmList<>();
+//                eventRealmList.addAll(eventRealmResults.subList(0, eventRealmResults.size()));
+//
+//                listener.onLoadEventsSuccess(eventRealmList);
             }
         });
     }
