@@ -39,6 +39,7 @@ public class UploadServiceReceiver extends BroadcastReceiver {
         snackBarView.setBackgroundColor(ContextCompat.getColor(activity, R.color.aaiOrange));
         // move to top
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) snackBarView.getLayoutParams();
+        params.topMargin = 150;
         params.gravity = Gravity.TOP;
         snackBarView.setLayoutParams(params);
     }
