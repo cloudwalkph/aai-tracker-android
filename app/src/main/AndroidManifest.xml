@@ -27,6 +27,11 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="e815ed231c5640326dde8364d63e16b96f5ec403"
+            />
+
         <service android:name=".service.UploadService" />
     </application>
 

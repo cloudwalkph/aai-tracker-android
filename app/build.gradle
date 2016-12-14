@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 23
@@ -23,6 +24,10 @@ android {
 repositories {
     maven {
         url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+    }
+
+    maven {
+        url 'https://maven.fabric.io/public'
     }
 
     maven {
@@ -81,4 +86,11 @@ dependencies {
      * RealmRecyclerView
      */
     compile 'com.github.thorbenprimke:realm-recyclerview:0.9.25'
+
+    /**
+     * Crashlytics
+     */
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
+        transitive = true;
+    }
 }
