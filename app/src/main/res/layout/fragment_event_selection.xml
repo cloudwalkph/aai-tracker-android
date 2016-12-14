@@ -14,8 +14,8 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".MainActivity"
         android:weightSum="1"
-        android:background="#ffffff"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:background="@color/aaiGray">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,31 +29,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                android:textColor="@color/aaiOrange" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/eventSpinner" />
+                android:id="@+id/eventSpinner"
+                android:layout_marginLeft="50dp"
+                android:backgroundTint="@color/aaiOrange" />
 
             <TextView
                 android:text="Select location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView2"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                android:textColor="@color/aaiOrange" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/locationSpinner" />
+                android:id="@+id/locationSpinner"
+                android:layout_marginLeft="50dp"
+                android:backgroundTint="@color/aaiOrange" />
         </LinearLayout>
     </LinearLayout>
 
     <Button
-        android:background="@drawable/generic_bottom_button_blue"
+        android:background="@drawable/generic_bottom_button"
         android:padding="30dp"
-        android:textColor="@color/medix_white"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/eventSelectSubmit"

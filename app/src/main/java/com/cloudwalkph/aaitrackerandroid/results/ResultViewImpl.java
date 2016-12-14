@@ -75,7 +75,7 @@ public class ResultViewImpl extends BaseFragment implements ResultView, ScreenCo
     private void initializeView(View rootView){
         ButterKnife.bind(this, rootView);
 
-        progressDialog = new ProgressDialog(getActivity());
+        progressDialog = new ProgressDialog(getActivity(), ProgressDialog.THEME_DEVICE_DEFAULT_DARK);
         progressDialog.setCancelable(false);
     }
 

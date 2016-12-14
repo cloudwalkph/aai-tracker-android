@@ -136,28 +136,27 @@ public class MainActivity extends AppCompatActivity implements ScreenControllerP
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            View view = getCurrentFocus();
-            if (view != null && (view instanceof EditText || view instanceof AppCompatEditText)) {
-                Rect r = new Rect();
-                view.getGlobalVisibleRect(r);
-                int rawX = (int)ev.getRawX();
-                int rawY = (int)ev.getRawY();
-                if (!r.contains(rawX, rawY)) {
-                    UiUtils.hideKeyboard(this);
-                }
-            }
-        }
+//        if (ev.getAction() == MotionEvent.ACTION_UP) {
+//            View view = getCurrentFocus();
+//            if (view != null && (view instanceof EditText || view instanceof AppCompatEditText)) {
+//                Rect r = new Rect();
+//                view.getGlobalVisibleRect(r);
+//                int rawX = (int)ev.getRawX();
+//                int rawY = (int)ev.getRawY();
+//                if (!r.contains(rawX, rawY)) {
+//                    UiUtils.hideKeyboard(this);
+//                }
+//            }
+//        }
         return super.dispatchTouchEvent(ev);
     }
 
     public void exitApp() {
-        new AlertDialog.Builder(this)
+        new AlertDialog.Builder(this, R.style.CustomAlertDialogStyle)
                 .setTitle("Really Exit?")
                 .setMessage("Are you sure you want to exit?")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
                     public void onClick(DialogInterface arg0, int arg1) {
                         finish();
                     }

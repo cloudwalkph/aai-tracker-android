@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_margin="20dp">
+    android:layout_margin="20dp"
+    android:background="@color/aaiGray">
 
     <ImageView
         android:layout_width="200px"
@@ -26,13 +27,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Age: "/>
+                android:text="Age: "
+                android:textColor="@color/white"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/age"
-                android:text="AGE"/>
+                android:text="AGE"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 
@@ -43,13 +46,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gender: "/>
+                android:text="Gender: "
+                android:textColor="@color/white"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/gender"
-                android:text="GENDER"/>
+                android:text="GENDER"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 

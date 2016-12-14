@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.TextView;
 
 import com.cloudwalkph.aaitrackerandroid.R;
 
@@ -29,9 +30,13 @@ public class UploadServiceReceiver extends BroadcastReceiver {
                 snackbar.dismiss();
             }
         });
+        snackbar.setActionTextColor(ContextCompat.getColor(activity, R.color.white));
         View snackBarView = snackbar.getView();
-        // bgcolor
-        snackBarView.setBackgroundColor(ContextCompat.getColor(activity, R.color.medix_gray));
+        // text color
+        TextView tv = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+        tv.setTextColor(ContextCompat.getColor(activity, R.color.white));
+        // bg color
+        snackBarView.setBackgroundColor(ContextCompat.getColor(activity, R.color.aaiOrange));
         // move to top
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) snackBarView.getLayoutParams();
         params.gravity = Gravity.TOP;

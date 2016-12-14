@@ -28,6 +28,7 @@ import com.cloudwalkph.aaitrackerandroid.lib.ui.BaseFragment;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenController;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenControllerImpl;
 import com.cloudwalkph.aaitrackerandroid.lib.ui.ScreenControllerProvider;
+import com.cloudwalkph.aaitrackerandroid.lib.ui.UiUtils;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -97,10 +98,10 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
     @BindViews({R.id.answerName, R.id.answerContactNumber, R.id.answerEmail})
     List<EditText> textFields;
 
-    @BindColor(R.color.medix_gray)
-    int medixGray;
-    @BindColor(R.color.medix_blue)
-    int medixBlue;
+    @BindColor(R.color.aaiLightGray)
+    int aaiLightGray;
+    @BindColor(R.color.aaiOrange)
+    int aaiOrange;
 
     private ScreenController screenController;
 
@@ -148,7 +149,7 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
         name = "";
         contactNumber = "";
         email = "";
-        progressDialog = new ProgressDialog(getActivity());
+        progressDialog = new ProgressDialog(getActivity(), ProgressDialog.THEME_DEVICE_DEFAULT_DARK);
         progressDialog.setCancelable(false);
     }
 
@@ -182,10 +183,10 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
                 selectedGender = "female";
                 break;
         }
-        button.setBackgroundColor(medixBlue);
+        button.setBackgroundColor(aaiOrange);
         for (Button genderButton : genderButtons) {
             if (button.getId() != genderButton.getId()) {
-                genderButton.setBackgroundColor(medixGray);
+                genderButton.setBackgroundColor(aaiLightGray);
             }
         }
         Log.d("SELECTGENDER", selectedGender);
@@ -207,10 +208,10 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
                 selectedAge = "31-35";
                 break;
         }
-        button.setBackgroundColor(medixBlue);
+        button.setBackgroundColor(aaiOrange);
         for (Button ageButton : ageButtons) {
             if (button.getId() != ageButton.getId()) {
-                ageButton.setBackgroundColor(medixGray);
+                ageButton.setBackgroundColor(aaiLightGray);
             }
         }
         Log.d("SELECTAGE", selectedAge);
@@ -245,11 +246,12 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
         } else {
             presenter.saveAnswer(selectedAge, selectedGender, imageFile.getAbsolutePath(), name, contactNumber, email);
         }
+        UiUtils.hideKeyboard(getActivity());
     }
 
     ButterKnife.Action<View> RESET_BUTTONS = new ButterKnife.Action<View>() {
         @Override public void apply(View view, int index) {
-            view.setBackgroundColor(medixGray);
+            view.setBackgroundColor(aaiLightGray);
         }
     };
 
@@ -274,7 +276,7 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
 
     @Override
     public void showSuccessDialog() {
-        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialogStyle).create();
         alertDialog.setTitle("Success!");
         alertDialog.setMessage("Answer has been saved. Press ok to dismiss.");
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",

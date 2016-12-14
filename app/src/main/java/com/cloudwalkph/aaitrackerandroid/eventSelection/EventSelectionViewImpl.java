@@ -96,7 +96,7 @@ public class EventSelectionViewImpl extends BaseFragment implements EventSelecti
     private void initializeView(View rootView){
         ButterKnife.bind(this, rootView);
 
-        progressDialog = new ProgressDialog(getActivity());
+        progressDialog = new ProgressDialog(getActivity(), ProgressDialog.THEME_DEVICE_DEFAULT_DARK);
         progressDialog.setCancelable(false);
     }
 

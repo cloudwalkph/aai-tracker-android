@@ -75,10 +75,18 @@ public class LoginViewImpl extends BaseFragment implements LoginView, ScreenCont
     private void initializeView(View rootView){
         ButterKnife.bind(this, rootView);
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+
         username.setText("sampler1@insite.com");
         password.setText("password");
-        progressDialog = new ProgressDialog(getActivity());
+        progressDialog = new ProgressDialog(getActivity(), ProgressDialog.THEME_DEVICE_DEFAULT_DARK);
         progressDialog.setCancelable(false);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
     }
 
     @OnClick(R.id.login_submit_button)

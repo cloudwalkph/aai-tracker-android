@@ -12,6 +12,8 @@
         android:gravity="center_horizontal"
         android:text="Nothing to see here..."
         android:textSize="24sp"
+        android:background="@color/aaiGray"
+        android:textColor="@color/white"
         />
 
 </LinearLayout>
