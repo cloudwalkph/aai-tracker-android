@@ -1,14 +1,17 @@
-package com.cloudwalkph.aaitrackerandroid.lib.model;
+package com.cloudwalkph.aaitrackerandroid.lib.model.users;
 
-import com.cloudwalkph.aaitrackerandroid.lib.api.BaseResponse;
 import com.google.gson.annotations.SerializedName;
+
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by patsoo on 08/01/16.
  */
 
-public class AccessToken extends BaseResponse {
+public class AccessToken extends RealmObject {
 
+    @PrimaryKey
     @SerializedName("access_token")
     private String accessToken;
 
@@ -55,11 +58,6 @@ public class AccessToken extends BaseResponse {
 
     @Override
     public String toString() {
-
-        if (super.getError() != null) {
-            return "AccessToken{error='" + super.getError() + "'}";
-        }
-
         return "AccessToken{" +
                 "accessToken='" + accessToken + '\'' +
                 ", tokenType='" + tokenType + '\'' +

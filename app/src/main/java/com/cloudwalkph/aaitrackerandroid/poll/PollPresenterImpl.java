@@ -3,7 +3,7 @@ package com.cloudwalkph.aaitrackerandroid.poll;
 import com.cloudwalkph.aaitrackerandroid.lib.model.CurrentEventLocation;
 import com.cloudwalkph.aaitrackerandroid.lib.model.localEventAnswers.LocalEventAnswer;
 import com.cloudwalkph.aaitrackerandroid.lib.model.localEventAnswers.LocalPollAnswer;
-import com.cloudwalkph.aaitrackerandroid.lib.model.TokenOwner;
+import com.cloudwalkph.aaitrackerandroid.lib.model.users.TokenOwner;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

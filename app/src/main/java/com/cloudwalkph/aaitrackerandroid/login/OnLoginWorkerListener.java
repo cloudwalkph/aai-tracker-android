@@ -1,7 +1,7 @@
 package com.cloudwalkph.aaitrackerandroid.login;
 
-import com.cloudwalkph.aaitrackerandroid.lib.model.AccessToken;
-import com.cloudwalkph.aaitrackerandroid.lib.model.TokenOwner;
+import com.cloudwalkph.aaitrackerandroid.lib.model.users.AccessToken;
+import com.cloudwalkph.aaitrackerandroid.lib.model.users.TokenOwner;
 
 /**
  * Created by patsoo on 09/01/16.

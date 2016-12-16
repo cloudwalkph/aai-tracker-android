@@ -1,6 +1,6 @@
 package com.cloudwalkph.aaitrackerandroid.login;
 
-import com.cloudwalkph.aaitrackerandroid.lib.model.AccessToken;
+import com.cloudwalkph.aaitrackerandroid.lib.model.users.AccessToken;
 
 import java.io.IOException;
 

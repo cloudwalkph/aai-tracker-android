@@ -2,8 +2,8 @@ package com.cloudwalkph.aaitrackerandroid.login;
 
 import com.cloudwalkph.aaitrackerandroid.lib.api.Conf;
 import com.cloudwalkph.aaitrackerandroid.lib.api.ServiceGenerator;
-import com.cloudwalkph.aaitrackerandroid.lib.model.AccessToken;
-import com.cloudwalkph.aaitrackerandroid.lib.model.TokenOwner;
+import com.cloudwalkph.aaitrackerandroid.lib.model.users.AccessToken;
+import com.cloudwalkph.aaitrackerandroid.lib.model.users.TokenOwner;
 import com.cloudwalkph.aaitrackerandroid.login.api.LoginBody;
 import com.cloudwalkph.aaitrackerandroid.login.api.LoginClient;
 import com.cloudwalkph.aaitrackerandroid.login.api.LoginResponse;
@@ -12,7 +12,6 @@ import com.cloudwalkph.aaitrackerandroid.login.api.UserInfoResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 /**
  * Created by patsoo on 09/01/16.

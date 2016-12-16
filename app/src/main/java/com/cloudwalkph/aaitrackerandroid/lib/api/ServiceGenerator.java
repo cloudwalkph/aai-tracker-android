@@ -2,7 +2,7 @@ package com.cloudwalkph.aaitrackerandroid.lib.api;
 
 import android.util.Base64;
 
-import com.cloudwalkph.aaitrackerandroid.lib.model.AccessToken;
+import com.cloudwalkph.aaitrackerandroid.lib.model.users.AccessToken;
 
 import java.io.IOException;
 

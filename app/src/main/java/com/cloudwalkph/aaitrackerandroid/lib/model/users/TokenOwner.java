@@ -1,11 +1,14 @@
-package com.cloudwalkph.aaitrackerandroid.lib.model;
+package com.cloudwalkph.aaitrackerandroid.lib.model.users;
 
 import com.google.gson.annotations.SerializedName;
+
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by tricksunga on 11/27/16.
  */
-public class TokenOwner {
+public class TokenOwner extends RealmObject {
 
     private int id;
     @SerializedName("first_name")
@@ -15,6 +18,7 @@ public class TokenOwner {
     private String company;
     @SerializedName("contact_number")
     private String contactNumber;
+    @PrimaryKey
     private String email;
     @SerializedName("created_at")
     private String createdAt;
