@@ -61,6 +61,8 @@ public class LoginViewImpl extends BaseFragment implements LoginView, ScreenCont
         initializePresenter();
         initializeScreenController();
         initializeView(rootView);
+
+        checkIfSessionExists();
         return rootView;
     }
 
@@ -81,6 +83,18 @@ public class LoginViewImpl extends BaseFragment implements LoginView, ScreenCont
         password.setText("password");
         progressDialog = new ProgressDialog(getActivity(), ProgressDialog.THEME_DEVICE_DEFAULT_DARK);
         progressDialog.setCancelable(false);
+    }
+
+    private void checkIfSessionExists() {
+        //TODO: session checking
+        /**
+         * check if access token exists and is not yet expired
+         * if expired show login view
+         * if not expired
+         * show "are you this user" details
+         * if yes; input password; navigateToScreen
+         * if not logout and show login view
+         */
     }
 
     @Override

@@ -1,12 +1,11 @@
 package com.cloudwalkph.aaitrackerandroid.login.api;
 
-import com.cloudwalkph.aaitrackerandroid.lib.api.BaseResponse;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by patsoo on 14/01/2016.
  */
-public class UserInfoResponse extends BaseResponse {
+public class UserInfoResponse {
 
     public int id;
     @SerializedName("first_name")

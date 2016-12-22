@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.os.SystemClock;
 
+import com.cloudwalkph.aaitrackerandroid.lib.model.eventAnswers.EventAnswer;
 import com.cloudwalkph.aaitrackerandroid.lib.model.localEventAnswers.LocalEventAnswer;
 import com.cloudwalkph.aaitrackerandroid.service.api.PollAnswerResponse;
 
@@ -29,6 +30,18 @@ public class UploadService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         final UploadWorker uploadWorker = new UploadWorkerImpl();
 
+        //TODO: fix this stupid mistake that I've done
+        /**
+         * This infinite loop can be (and should be) implemented in a much much much better way.
+         * The way I did this is stupid. Please don't hate.
+         * Please avoid doing infinite loops by implementing event libraries like EventBus or RxJava/RxAndroid.
+         *
+         * Here, help yourself:
+         * https://github.com/greenrobot/EventBus
+         * https://github.com/ReactiveX/RxAndroid
+         *
+         * GLHF
+         */
         while(true) {
             Realm realm = null;
             try {

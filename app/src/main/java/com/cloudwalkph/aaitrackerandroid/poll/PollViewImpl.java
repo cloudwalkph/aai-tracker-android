@@ -234,7 +234,7 @@ public class PollViewImpl extends BaseFragment implements PollView, ScreenContro
 
     @OnClick(R.id.saveAnswer)
     public void saveAnswer(View view) {
-        // validate
+        //TODO: validation should happen on the Presenter, not here
         if(imageFile == null) {
             Toast.makeText(getActivity(), "Please capture an image.", Toast.LENGTH_LONG).show();
         } else if(selectedGender.equals("")) {
