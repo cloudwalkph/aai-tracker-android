@@ -3,9 +3,33 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/aaiGray</item>
+        <item name="colorPrimaryDark">@color/aaiGray</item>
+        <item name="colorAccent">@color/aaiOrange</item>
+
+        <!--Text-->
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/aaiGray</item>
+        <!--Title-->
+        <item name="android:textColor">@color/aaiOrange</item>
+
+        <!--Menu Background-->
+        <item name="android:itemBackground">@color/aaiGray</item>
     </style>
+
+    <style name="CustomAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!--Buttons-->
+        <item name="colorAccent">@color/aaiOrange</item>
+        <!--Text-->
+        <item name="android:textColorPrimary">@color/white</item>
+        <!--Title-->
+        <item name="android:textColor">@color/aaiOrange</item>
+        <!--Background-->
+        <item name="android:background">@color/aaiGray</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

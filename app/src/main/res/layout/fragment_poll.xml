@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".MainActivity"
+        android:weightSum="1"
+        android:layout_above="@+id/saveAnswer"
+        android:background="@color/aaiGray">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:id="@+id/scrollView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:layout_width="250px"
+                    android:layout_height="250px"
+                    app:srcCompat="@drawable/camera"
+                    android:id="@+id/picture"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:text="Gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3"
+                    android:textSize="25dp"
+                    android:textColor="@color/aaiOrange" />
+
+                <org.apmem.tools.layouts.FlowLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:f="http://schemas.android.com/apk/res-auto"
+                    android:orientation="horizontal"
+                    f:weightDefault="1.0"
+                    f:layoutDirection="ltr"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_width="150dp"
+                        android:layout_height="80dp"
+                        android:textSize="20dp"
+                        android:text="Male"
+                        android:id="@+id/genderMale"
+                        android:background="@color/aaiLightGray"
+                        android:layout_margin="10dp"
+                        android:textColor="@color/white" />
+                    <Button
+                        android:layout_width="150dp"
+                        android:layout_height="80dp"
+                        android:textSize="20dp"
+                        android:text="Female"
+                        android:id="@+id/genderFemale"
+                        android:background="@color/aaiLightGray"
+                        android:layout_margin="10dp"
+                        android:textColor="@color/white" />
+
+                </org.apmem.tools.layouts.FlowLayout>
+
+
+
+                <TextView
+                    android:text="Age group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView4"
+                    android:textSize="25dp"
+                    android:textColor="@color/aaiOrange" />
+
+                <org.apmem.tools.layouts.FlowLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:f="http://schemas.android.com/apk/res-auto"
+                    android:orientation="horizontal"
+                    f:weightDefault="1.0"
+                    f:layoutDirection="ltr"
+                    android:gravity="center"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_width="150dp"
+                        android:layout_height="80dp"
+                        android:textSize="20dp"
+                        android:text="15 - 20"
+                        android:id="@+id/age1520"
+                        android:background="@color/aaiLightGray"
+                        android:layout_margin="10dp"
+                        android:textColor="@color/white" />
+                    <Button
+                        android:layout_width="150dp"
+                        android:layout_height="80dp"
+                        android:textSize="20dp"
+                        android:text="21 - 25"
+                        android:id="@+id/age2125"
+                        android:background="@color/aaiLightGray"
+                        android:layout_margin="10dp"
+                        android:textColor="@color/white" />
+                    <Button
+                        android:layout_width="150dp"
+                        android:layout_height="80dp"
+                        android:textSize="20dp"
+                        android:text="26 - 30"
+                        android:id="@+id/age2630"
+                        android:background="@color/aaiLightGray"
+                        android:layout_margin="10dp"
+                        android:textColor="@color/white" />
+                    <Button
+                        android:layout_width="150dp"
+                        android:layout_height="80dp"
+                        android:textSize="20dp"
+                        android:text="31 - 35"
+                        android:id="@+id/age3135"
+                        android:background="@color/aaiLightGray"
+                        android:layout_margin="10dp"
+                        android:textColor="@color/white" />
+
+                </org.apmem.tools.layouts.FlowLayout>
+
+
+
+                <TextView
+                    android:text="Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView5"
+                    android:textSize="25dp"
+                    android:textColor="@color/aaiOrange" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:inputType="text"
+                    android:id="@+id/answerName"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:nextFocusDown="@+id/answerContactNumber"
+                    android:maxLines="1"/>
+
+
+
+                <TextView
+                    android:text="Contact Number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView6"
+                    android:textSize="25dp"
+                    android:textColor="@color/aaiOrange" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:inputType="text"
+                    android:id="@+id/answerContactNumber"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:nextFocusDown="@+id/answerEmail"
+                    android:maxLines="1"/>
+
+
+
+                <TextView
+                    android:text="Email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView7"
+                    android:textSize="25dp"
+                    android:textColor="@color/aaiOrange" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:inputType="text"
+                    android:id="@+id/answerEmail"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:maxLines="1"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <Button
+        android:background="@drawable/generic_bottom_button"
+        android:padding="30dp"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/saveAnswer"
+        android:id="@+id/saveAnswer"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:textSize="25dp" />
+
+</RelativeLayout>

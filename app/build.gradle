@@ -1,12 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+apply plugin: 'io.fabric'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
     defaultConfig {
         applicationId "com.cloudwalkph.aaitrackerandroid"
         minSdkVersion 19
-        targetSdkVersion 24
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -19,11 +21,76 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+    }
+
+    maven {
+        url 'https://maven.fabric.io/public'
+    }
+
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
     testCompile 'junit:junit:4.12'
+
+    /**
+     * Network libs
+     */
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+
+    /**
+     * Butterknife
+     */
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    /**
+     * EasyImage
+     */
+    compile 'com.github.jkwiecien:EasyImage:1.4.0'
+
+    /**
+     * Picasso
+     */
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    /**
+     * Stetho
+     */
+    compile 'com.facebook.stetho:stetho:1.4.1'
+
+    /**
+     * Stetho - Realm plugin
+     */
+    compile 'com.uphyca:stetho_realm:2.0.0'
+
+    /**
+     * FlowLayout
+     */
+    compile 'org.apmem.tools:layouts:1.10@aar'
+
+    /**
+     * RealmRecyclerView
+     */
+    compile 'com.github.thorbenprimke:realm-recyclerview:0.9.25'
+
+    /**
+     * Crashlytics
+     */
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
+        transitive = true;
+    }
 }

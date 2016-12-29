@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">@color/aaiGray</color>
+    <color name="colorPrimaryDark">@color/aaiGray</color>
+    <color name="colorAccent">@color/aaiOrange</color>
+
+    <color name="aaiOrange">#f47f20</color>
+    <color name="aaiGray">#383938</color>
+    <color name="aaiLightGray">#c2c2c2</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
 </resources>

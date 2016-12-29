@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">AAITrackerAndroid</string>
+
+    <!--Menu items-->
+    <string name="actionEventSelect">Select event</string>
+    <string name="actionViewResult">View results</string>
+    <string name="actionLogout">Logout</string>
+
+    <!--Login-->
+    <string name="loginSubtitle">Please log in to access AAI Tracker.</string>
+    <string name="loginEmail">Username</string>
+    <string name="loginPassword">Password</string>
+    <string name="loginSubmit">Login</string>
+
+    <!--Event Selection-->
+    <string name="eventSelectSubmit">Go to poll</string>
+
+    <!--Poll-->
+    <string name="saveAnswer">Save Answer</string>
 </resources>
